@@ -45,8 +45,27 @@ export async function initDatabase(): Promise<void> {
       folders      JSONB,
       updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
     );
+    ALTER TABLE user_data ADD COLUMN IF NOT EXISTS settings JSONB NOT NULL DEFAULT '{}'::jsonb;
+    ALTER TABLE user_data ADD COLUMN IF NOT EXISTS consent JSONB;
+
+    CREATE TABLE IF NOT EXISTS admin_sessions (
+      token_hash TEXT PRIMARY KEY,
+      expires_at TIMESTAMPTZ NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
+
+    -- Door de beheerder toegevoegde quizitems, zichtbaar voor alle bezoekers
+    CREATE TABLE IF NOT EXISTS custom_items (
+      id         TEXT PRIMARY KEY,
+      name       TEXT NOT NULL,
+      capital    TEXT,
+      region     TEXT NOT NULL,
+      category   TEXT NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
   `);
 
   // Verlopen sessies opruimen
   await pool.query("DELETE FROM sessions WHERE expires_at < now()");
+  await pool.query("DELETE FROM admin_sessions WHERE expires_at < now()");
 }

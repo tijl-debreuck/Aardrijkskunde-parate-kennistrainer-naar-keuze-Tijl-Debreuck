@@ -142,6 +142,8 @@ interface UserDataResponse {
     geoStats: Record<string, any>;
     geoProgress: Record<string, any>;
     folders: StudyFolder[] | null;
+    settings: Record<string, string>;
+    consent: Record<string, any> | null;
     updatedAt: string;
   } | null;
 }
@@ -187,6 +189,8 @@ export async function getDoc(docRef: DocumentReference): Promise<DocumentSnapsho
       preferences: isEmptyObject(data.preferences) ? undefined : data.preferences,
       geoStats: data.geoStats,
       geoProgress: data.geoProgress,
+      settings: data.settings,
+      consent: data.consent,
     } : undefined,
     id: docRef.id,
   };
@@ -235,6 +239,18 @@ export async function updateDoc(docRef: DocumentReference, updateData: any): Pro
   if (Object.keys(fields).length > 0) {
     await putUserData(fields);
   }
+}
+
+/** Bewaart het toestemmingsbewijs (AVG art. 7) bij het account. */
+export async function saveUserConsent(consent: Record<string, any>): Promise<void> {
+  if (!auth.currentUser) return;
+  await putUserData({ consent });
+}
+
+/** Volledige accountdata uit de database, voor de AVG-export. */
+export async function fetchAccountDataExport() {
+  if (!auth.currentUser) return null;
+  return fetchUserData();
 }
 
 export async function deleteDoc(docRef: DocumentReference): Promise<void> {

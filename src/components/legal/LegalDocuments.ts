@@ -1,3 +1,5 @@
+import { auth, saveUserConsent, fetchAccountDataExport } from '../../lib/dbAdapter';
+
 export interface LegalSection {
   id: string;
   title: string;
@@ -32,11 +34,13 @@ export const LEGAL_SECTIONS: LegalSection[] = [
       'GeoTrainer maakt conform de ePrivacy-richtlijn uitsluitend gebruik van strikt noodzakelijke functionele browseropslag (HTML5 localStorage) en, voor ingelogde gebruikers, één strikt noodzakelijke sessiecookie.',
       'Overzicht van opgeslagen sleutels:',
       '• geo_session (cookie, enkel na inloggen): Houdt je ingelogd. Strikt noodzakelijk, httpOnly en vervalt na 30 dagen of bij uitloggen.',
+      '• geo_admin (cookie, enkel voor beheerders): Houdt de beheerder ingelogd op het beheerpaneel. Vervalt na 12 uur of bij uitloggen.',
       '• geo_legal_consent: Onthoudt jouw acceptatie van deze juridische voorwaarden.',
       '• geo_theme: Onthoudt jouw kleurvoorkeur (donker of licht thema).',
       '• geo_language: Onthoudt jouw taalvoorkeur voor geografische namen (Nederlands of Engels).',
       '• geo_trainer_progress: Bevat de spaced repetition leerkaartstatus en foutenanalyse.',
-      '• geo_study_folders: Bevat jouw zelf aangemaakte studiemapjes met geselecteerde leerelementen.',
+      '• geo_wrong_answer_delay, geo_map_contrast, geoSoundMuted: Onthouden je weergave- en geluidsinstellingen.',
+      'Studiemapjes worden niet in de browser bewaard maar bij je account in de database. Ben je ingelogd, dan worden ook je instellingen, voortgang en toestemming daar bewaard zodat ze op elk toestel beschikbaar zijn.',
       'Geen tracking van derden: We gebruiken geen tracking cookies van derden, geen marketing pixels en geen fingerprinting.',
       'Lokale fonts & assets: Alle lettertypen en iconen worden lokaal vanuit de applicatie gebundeld en geserveerd, zonder externe verzoeken naar servers van derden.'
     ]
@@ -112,22 +116,25 @@ export function saveConsent(): ConsentRecord {
     userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown'
   };
   localStorage.setItem('geo_legal_consent', JSON.stringify(record));
+  saveUserConsent(record).catch(err => console.warn("Toestemming opslaan mislukt:", err));
   return record;
 }
 
 export function revokeConsent(): void {
   localStorage.removeItem('geo_legal_consent');
+  saveUserConsent({ accepted: false, revokedAt: new Date().toISOString(), version: CURRENT_LEGAL_VERSION })
+    .catch(err => console.warn("Intrekking toestemming opslaan mislukt:", err));
 }
 
 /**
  * Builds a complete GDPR data export object for the user.
  */
-export function buildUserDataExport(userEmail?: string | null): Record<string, any> {
+export async function buildUserDataExport(): Promise<Record<string, any>> {
   const statsRaw = localStorage.getItem('geo_trainer_stats');
   const progressRaw = localStorage.getItem('geo_trainer_progress');
-  const foldersRaw = localStorage.getItem('geo_study_folders');
-  const customItemsRaw = localStorage.getItem('geo_trainer_custom_items');
   const consent = getStoredConsent();
+  const userEmail = auth.currentUser?.email;
+  const account = await fetchAccountDataExport().catch(() => null);
 
   return {
     exportMetadata: {
@@ -145,7 +152,18 @@ export function buildUserDataExport(userEmail?: string | null): Record<string, a
     },
     statistieken: statsRaw ? JSON.parse(statsRaw) : {},
     leervoortgangSpacedRepetition: progressRaw ? JSON.parse(progressRaw) : {},
-    aangemaakteLeermapjes: foldersRaw ? JSON.parse(foldersRaw) : [],
-    aangepasteDatabankItems: customItemsRaw ? JSON.parse(customItemsRaw) : []
+    aangemaakteLeermapjes: account?.folders || [],
+    ...(account ? {
+      accountGegevensInDatabase: {
+        email: userEmail,
+        voorkeuren: account.preferences,
+        instellingen: account.settings,
+        statistieken: account.geoStats,
+        leervoortgang: account.geoProgress,
+        leermapjes: account.folders,
+        toestemming: account.consent,
+        laatstBijgewerkt: account.updatedAt
+      }
+    } : {})
   };
 }

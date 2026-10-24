@@ -35,18 +35,22 @@ const DUMMY_HASH_PROMISE = hashPassword(crypto.randomBytes(16).toString("hex"));
 // Sessies (willekeurig token in cookie, enkel de SHA-256 ervan in de database)
 // ----------------------------------------------------
 
-function hashToken(token: string): string {
+export function hashToken(token: string): string {
   return crypto.createHash("sha256").update(token).digest("hex");
 }
 
-function readSessionToken(req: Request): string | null {
+export function readCookie(req: Request, cookieName: string): string | null {
   const header = req.headers.cookie;
   if (!header) return null;
   for (const part of header.split(";")) {
     const [name, ...rest] = part.trim().split("=");
-    if (name === SESSION_COOKIE) return decodeURIComponent(rest.join("="));
+    if (name === cookieName) return decodeURIComponent(rest.join("="));
   }
   return null;
+}
+
+function readSessionToken(req: Request): string | null {
+  return readCookie(req, SESSION_COOKIE);
 }
 
 async function createSession(res: Response, userId: string): Promise<void> {
@@ -234,7 +238,7 @@ export function createUserDataRouter() {
   router.get("/", async (req: AuthedRequest, res, next) => {
     try {
       const { rows } = await pool.query(
-        `SELECT preferences, geo_stats, geo_progress, folders, updated_at
+        `SELECT preferences, geo_stats, geo_progress, folders, settings, consent, updated_at
            FROM user_data WHERE user_id = $1`,
         [req.user!.uid]
       );
@@ -247,6 +251,8 @@ export function createUserDataRouter() {
               geoStats: row.geo_stats,
               geoProgress: row.geo_progress,
               folders: row.folders,
+              settings: row.settings,
+              consent: row.consent,
               updatedAt: row.updated_at,
             }
           : null,
@@ -259,9 +265,9 @@ export function createUserDataRouter() {
   // Werkt enkel de meegestuurde velden bij; maakt de rij aan als die nog niet bestaat
   router.put("/", async (req: AuthedRequest, res, next) => {
     try {
-      const { preferences, geoStats, geoProgress, folders } = req.body || {};
+      const { preferences, geoStats, geoProgress, folders, settings, consent } = req.body || {};
 
-      for (const [name, val] of Object.entries({ preferences, geoStats, geoProgress })) {
+      for (const [name, val] of Object.entries({ preferences, geoStats, geoProgress, settings, consent })) {
         if (val !== undefined && !isPlainObject(val)) {
           return res.status(400).json({ success: false, error: `Ongeldig veld: ${name}.` });
         }
@@ -272,16 +278,19 @@ export function createUserDataRouter() {
 
       const json = (v: unknown) => (v === undefined ? null : JSON.stringify(v));
       const { rows } = await pool.query(
-        `INSERT INTO user_data (user_id, preferences, geo_stats, geo_progress, folders)
-         VALUES ($1, COALESCE($2::jsonb, '{}'::jsonb), COALESCE($3::jsonb, '{}'::jsonb), COALESCE($4::jsonb, '{}'::jsonb), $5::jsonb)
+        `INSERT INTO user_data (user_id, preferences, geo_stats, geo_progress, folders, settings, consent)
+         VALUES ($1, COALESCE($2::jsonb, '{}'::jsonb), COALESCE($3::jsonb, '{}'::jsonb), COALESCE($4::jsonb, '{}'::jsonb), $5::jsonb,
+                 COALESCE($6::jsonb, '{}'::jsonb), $7::jsonb)
          ON CONFLICT (user_id) DO UPDATE SET
            preferences  = COALESCE($2::jsonb, user_data.preferences),
            geo_stats    = COALESCE($3::jsonb, user_data.geo_stats),
            geo_progress = COALESCE($4::jsonb, user_data.geo_progress),
            folders      = COALESCE($5::jsonb, user_data.folders),
+           settings     = COALESCE($6::jsonb, user_data.settings),
+           consent      = COALESCE($7::jsonb, user_data.consent),
            updated_at   = now()
          RETURNING updated_at`,
-        [req.user!.uid, json(preferences), json(geoStats), json(geoProgress), json(folders)]
+        [req.user!.uid, json(preferences), json(geoStats), json(geoProgress), json(folders), json(settings), json(consent)]
       );
 
       return res.json({ success: true, updatedAt: rows[0].updated_at });

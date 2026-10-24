@@ -7,21 +7,16 @@ import {
 import belgiumData from '../../data/belgium.json';
 import europeData from '../../data/europe.json';
 import worldData from '../../data/world.json';
-
-interface CustomItem {
-  id: string;
-  name: string;
-  capital?: string;
-  region: Region;
-  category: QuestionType;
-}
+import { CustomItem, fetchCustomItems, importCustomItems, deleteCustomItem } from '../../lib/customItems';
+import { User, getUserStudyFolders, saveUserStudyFolders, StudyFolder } from '../../lib/dbAdapter';
 
 interface AdminDatasetsProps {
   onClearStats: () => void;
   theme: 'dark' | 'light';
+  user: User | null;
 }
 
-export const AdminDatasets: React.FC<AdminDatasetsProps> = ({ theme }) => {
+export const AdminDatasets: React.FC<AdminDatasetsProps> = ({ theme, user }) => {
   const [customItems, setCustomItems] = useState<CustomItem[]>([]);
   const [toast, setToast] = useState<string | null>(null);
   const [filterRegion, setFilterRegion] = useState<string>('all');
@@ -29,45 +24,29 @@ export const AdminDatasets: React.FC<AdminDatasetsProps> = ({ theme }) => {
   
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Load custom data from localstorage
-  const loadCustomItems = () => {
-    const saved = localStorage.getItem('geo_trainer_custom_items');
-    if (saved) {
-      try {
-        setCustomItems(JSON.parse(saved));
-      } catch (e) {
-        console.error(e);
-        setCustomItems([]);
-      }
-    } else {
-      setCustomItems([]);
-    }
-  };
-
+  // Items staan in de database en zijn voor alle bezoekers zichtbaar
   useEffect(() => {
-    loadCustomItems();
+    fetchCustomItems().then(items => setCustomItems([...items]));
   }, []);
-
-  const saveCustomItems = (list: CustomItem[]) => {
-    setCustomItems(list);
-    localStorage.setItem('geo_trainer_custom_items', JSON.stringify(list));
-  };
 
   const showToast = (msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(null), 3000);
   };
 
-  const handleDelete = (id: string) => {
-    const updated = customItems.filter(item => item.id !== id);
-    saveCustomItems(updated);
-    showToast("Item verwijderd.");
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteCustomItem(id);
+      setCustomItems(prev => prev.filter(item => item.id !== id));
+      showToast("Item verwijderd.");
+    } catch (err: any) {
+      alert(err.message || "Verwijderen mislukt.");
+    }
   };
 
-  // Full backup JSON export
-  const exportFullBackupJSON = () => {
-    const folders = localStorage.getItem('geo_study_folders');
-    const parsedFolders = folders ? JSON.parse(folders) : [];
+  // Full backup JSON export (leermapjes van het ingelogde account, indien aanwezig)
+  const exportFullBackupJSON = async () => {
+    const parsedFolders = user ? await getUserStudyFolders(user.uid) : [];
 
     const now = new Date();
     const pad = (n: number) => n.toString().padStart(2, '0');
@@ -102,7 +81,7 @@ export const AdminDatasets: React.FC<AdminDatasetsProps> = ({ theme }) => {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (event) => {
+    reader.onload = async (event) => {
       try {
         const content = event.target?.result as string;
         const parsed = JSON.parse(content);
@@ -127,35 +106,29 @@ export const AdminDatasets: React.FC<AdminDatasetsProps> = ({ theme }) => {
           return;
         }
 
-        // Merge custom items
-        const existingMap = new Map<string, CustomItem>();
-        customItems.forEach(item => existingMap.set(item.id, item));
-        itemsToImport.forEach(item => {
-          if (item && item.name) {
-            const id = item.id || `custom-${item.region || 'belgium'}-${item.category || 'province'}-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`;
-            existingMap.set(id, { ...item, id });
-          }
-        });
+        // Items in de database zetten (bestaande id's worden overschreven)
+        let imported = 0;
+        if (itemsToImport.length > 0) {
+          const result = await importCustomItems(itemsToImport);
+          imported = result.imported;
+          setCustomItems([...(await fetchCustomItems())]);
+        }
 
-        const mergedItems = Array.from(existingMap.values());
-        saveCustomItems(mergedItems);
-
-        // Merge folders if available
-        if (foldersToImport.length > 0) {
-          const storedFolders = localStorage.getItem('geo_study_folders');
-          const currentFolders = storedFolders ? JSON.parse(storedFolders) : [];
-          const folderMap = new Map();
-          currentFolders.forEach((f: any) => folderMap.set(f.id, f));
+        // Leermapjes samenvoegen met die van het ingelogde account
+        if (foldersToImport.length > 0 && user) {
+          const currentFolders = await getUserStudyFolders(user.uid);
+          const folderMap = new Map<string, StudyFolder>();
+          currentFolders.forEach(f => folderMap.set(f.id, f));
           foldersToImport.forEach((f: any) => {
             if (f && f.name) folderMap.set(f.id, f);
           });
-          localStorage.setItem('geo_study_folders', JSON.stringify(Array.from(folderMap.values())));
+          await saveUserStudyFolders(user.uid, Array.from(folderMap.values()));
         }
 
-        showToast(`Backup succesvol hersteld: ${itemsToImport.length} items geïmporteerd!`);
+        showToast(`Backup succesvol hersteld: ${imported} items geïmporteerd!`);
       } catch (err) {
         console.error("Fout bij inlezen backup", err);
-        alert("Ongeldig JSON-bestand: kon backup niet inlezen.");
+        alert(err instanceof SyntaxError ? "Ongeldig JSON-bestand: kon backup niet inlezen." : `Importeren mislukt: ${(err as Error).message}`);
       }
     };
     reader.readAsText(file);

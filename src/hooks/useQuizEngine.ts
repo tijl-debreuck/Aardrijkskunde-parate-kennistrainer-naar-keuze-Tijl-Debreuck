@@ -8,6 +8,7 @@ import { getClueForGeoItem } from '../utils/questionDescriptions';
 import { Language, translateName } from '../utils/language';
 import { UserPreferences } from './useUserPreferences';
 import { allGeoFeatures, GeoFeature } from '../data/geoData';
+import { getCachedCustomItems } from '../lib/customItems';
 
 const geoFeaturesMap = new Map<string, GeoFeature>();
 allGeoFeatures.forEach(f => {
@@ -205,11 +206,10 @@ export const useQuizEngine = (
 
     // Merge custom added items from admin panel if they match current filters
     let allMerged = baseItems;
-    const customSaved = localStorage.getItem('geo_trainer_custom_items');
-    if (customSaved) {
+    const parsedCustom: any[] = getCachedCustomItems();
+    if (parsedCustom.length > 0) {
       try {
-        const parsedCustom = JSON.parse(customSaved);
-        const matchingCustom = parsedCustom
+        const matchingCustom: any[] = parsedCustom
           .filter((it: any) => {
              if (prefs) {
                 return prefs.selectedRegions.includes(it.region) && (prefs.selectedCategories.includes(it.category) || (m||mode) === 'flag');

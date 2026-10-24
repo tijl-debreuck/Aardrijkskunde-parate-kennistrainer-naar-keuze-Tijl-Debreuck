@@ -15,6 +15,8 @@ import { useUserPreferences } from './hooks/useUserPreferences';
 import sound from './utils/audio';
 import { LegalConsentModal } from './components/legal/LegalConsentModal';
 import { getStoredConsent, saveConsent } from './components/legal/LegalDocuments';
+import { saveSetting, SETTINGS_CHANGED_EVENT } from './lib/userSettings';
+import { fetchCustomItems } from './lib/customItems';
 import { 
   RefreshCw, ArrowLeft, Hourglass, Moon, Sun, Volume2, VolumeX, Lock
 } from 'lucide-react';
@@ -115,8 +117,26 @@ export default function App() {
 
   const t = uiTranslations[language];
 
+  // Instellingen die na het inloggen uit de database komen, opnieuw inlezen
   useEffect(() => {
-    localStorage.setItem('geo_theme', theme);
+    const reload = () => {
+      setTheme((localStorage.getItem('geo_theme') as 'dark' | 'light') || 'light');
+      setLanguage((localStorage.getItem('geo_language') as Language) || 'nl');
+      const muted = localStorage.getItem('geoSoundMuted') === 'true';
+      sound.setMuted(muted);
+      setIsSoundMuted(muted);
+    };
+    window.addEventListener(SETTINGS_CHANGED_EVENT, reload);
+    return () => window.removeEventListener(SETTINGS_CHANGED_EVENT, reload);
+  }, []);
+
+  // Door de beheerder toegevoegde quizitems ophalen
+  useEffect(() => {
+    fetchCustomItems();
+  }, []);
+
+  useEffect(() => {
+    saveSetting('theme', theme);
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
@@ -228,7 +248,15 @@ export default function App() {
 
 
   // Admin authentication states
-  const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem('geoAdminAuth') === 'true');
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Admin-sessie zit in een httpOnly-cookie; de server zegt of die nog geldig is
+  useEffect(() => {
+    fetch('/api/admin/session', { credentials: 'same-origin' })
+      .then(res => res.json())
+      .then(data => setIsAdmin(Boolean(data.isAdmin)))
+      .catch(() => setIsAdmin(false));
+  }, []);
   const [adminPasswordInput, setAdminPasswordInput] = useState('');
   const [adminError, setAdminError] = useState<string | null>(null);
   const [adminLoading, setAdminLoading] = useState(false);
@@ -255,7 +283,6 @@ export default function App() {
       const data = await res.json().catch(() => ({ success: false, error: 'Ongeldig antwoord van server' }));
       if (res.ok && data.success) {
         setIsAdmin(true);
-        localStorage.setItem('geoAdminAuth', 'true');
         setAdminPasswordInput('');
       } else {
         setAdminError(data.error || 'Onjuist wachtwoord!');
@@ -269,7 +296,7 @@ export default function App() {
 
   const handleAdminLogout = () => {
     setIsAdmin(false);
-    localStorage.removeItem('geoAdminAuth');
+    fetch('/api/admin/logout', { method: 'POST', credentials: 'same-origin' }).catch(() => {});
   };
 
   // Track gameplay stopwatch (count up)
@@ -377,7 +404,6 @@ export default function App() {
     if (confirm("Weet je zeker dat je alle behaalde scores en spaced repetition records permanent wilt wissen? Dit kan niet ongedaan worden gemaakt.")) {
       localStorage.removeItem('geo_trainer_stats');
       localStorage.removeItem('geo_trainer_progress');
-      localStorage.removeItem('geo_trainer_custom_items');
       
       if (user) {
          try {
