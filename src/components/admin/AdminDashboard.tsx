@@ -137,6 +137,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           <AdminDatasets 
             onClearStats={onClearStats} 
             theme={theme} 
+            user={user}
           />
         )}
 

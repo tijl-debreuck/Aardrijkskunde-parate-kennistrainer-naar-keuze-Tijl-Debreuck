@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Settings as SettingsIcon, Volume2, VolumeX, Moon, Sun, 
   Sliders, Check, Languages, ShieldCheck, Download, Trash2, 
@@ -7,6 +7,7 @@ import {
 import { Language, uiTranslations } from '../../utils/language';
 import { LegalConsentModal } from '../legal/LegalConsentModal';
 import { buildUserDataExport, getStoredConsent, revokeConsent } from '../legal/LegalDocuments';
+import { saveSetting, SETTINGS_CHANGED_EVENT } from '../../lib/userSettings';
 
 interface SettingsProps {
   theme: 'dark' | 'light';
@@ -43,6 +44,17 @@ export const Settings: React.FC<SettingsProps> = ({
 
   const [notification, setNotification] = useState<string | null>(null);
 
+  // Instellingen kunnen na het inloggen uit de database binnenkomen
+  useEffect(() => {
+    const reload = () => {
+      const val = localStorage.getItem('geo_wrong_answer_delay');
+      setWrongAnswerDelay(val ? parseFloat(val) : 3.0);
+      setMapHighContrast(localStorage.getItem('geo_map_contrast') === 'true');
+    };
+    window.addEventListener(SETTINGS_CHANGED_EVENT, reload);
+    return () => window.removeEventListener(SETTINGS_CHANGED_EVENT, reload);
+  }, []);
+
   const showToast = (msg: string) => {
     setNotification(msg);
     setTimeout(() => setNotification(null), 3000);
@@ -52,20 +64,20 @@ export const Settings: React.FC<SettingsProps> = ({
     if (onLanguageChange) {
       onLanguageChange(nextLang);
     }
-    localStorage.setItem('geo_language', nextLang);
+    saveSetting('language', nextLang);
     showToast(t.toastLangChanged(nextLang === 'nl' ? 'Nederlands' : 'English'));
   };
 
   const handleWrongDelayChange = (seconds: number) => {
     setWrongAnswerDelay(seconds);
-    localStorage.setItem('geo_wrong_answer_delay', seconds.toString());
+    saveSetting('wrongAnswerDelay', seconds.toString());
     showToast(`Pauze bij fout antwoord ingesteld op ${seconds.toFixed(1)}s`);
   };
 
   const handleToggleContrast = () => {
     const next = !mapHighContrast;
     setMapHighContrast(next);
-    localStorage.setItem('geo_map_contrast', String(next));
+    saveSetting('mapContrast', String(next));
     showToast(next ? 'Hoog-contrast kaartranden ingeschakeld' : 'Standaard kaartranden ingeschakeld');
   };
 
@@ -297,8 +309,8 @@ export const Settings: React.FC<SettingsProps> = ({
 
             {/* Download Data Knop */}
             <button
-              onClick={() => {
-                const data = buildUserDataExport();
+              onClick={async () => {
+                const data = await buildUserDataExport();
                 const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');

@@ -1,12 +1,12 @@
 /**
- * Database & Authenticatie Adapter (Lokale & Cloud-agnotische Adapter)
- * 
- * Deze service biedt een abstractielaag voor authenticatie en database-operaties.
- * Standaard draait deze in een veilige, offline-first modus via browser localStorage.
- * 
- * Wanneer je je applicatie publiek lanceert of een backend (zoals Supabase, PostgreSQL,
- * SQLite of een eigen Express/REST API) wilt aansluiten, kun je de implementaties in
- * dit bestand vervangen zonder dat de frontend componenten aangepast hoeven te worden.
+ * Database & Authenticatie Adapter
+ *
+ * Praat met de Express backend (server/auth.ts), die accounts en gebruikersdata
+ * in PostgreSQL bewaart. De sessie zit in een httpOnly-cookie, dus de browser
+ * houdt zelf geen wachtwoorden of tokens bij.
+ *
+ * De functienamen (doc, getDoc, setDoc, ...) blijven gelijk aan de eerdere
+ * Firestore-achtige API zodat de componenten niet herschreven hoeven te worden.
  */
 
 export interface User {
@@ -19,46 +19,41 @@ export interface User {
 
 export type AuthStateCallback = (user: User | null) => void;
 
-const AUTH_STORAGE_KEY = 'geo_auth_local_user';
 const authListeners = new Set<AuthStateCallback>();
 
-function getStoredUser(): User | null {
-  try {
-    const raw = localStorage.getItem(AUTH_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return {
-      ...parsed,
-      delete: async () => {
-        localStorage.removeItem(AUTH_STORAGE_KEY);
-        setCurrentUser(null);
-      }
-    };
-  } catch {
-    return null;
+async function apiRequest<T = any>(url: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(url, {
+    credentials: 'same-origin',
+    ...init,
+    headers: { 'Content-Type': 'application/json', ...(init?.headers || {}) },
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.success === false) {
+    throw new Error(data.error || `Serverfout (${res.status})`);
   }
+  return data as T;
+}
+
+function withDelete(user: User): User {
+  return {
+    ...user,
+    delete: async () => {
+      await apiRequest('/api/auth/account', { method: 'DELETE' });
+      clearLocalUserCache();
+      setCurrentUser(null);
+    },
+  };
+}
+
+// Leervoortgang van de vorige gebruiker niet laten rondslingeren op gedeelde computers
+function clearLocalUserCache() {
+  localStorage.removeItem('geo_trainer_stats');
+  localStorage.removeItem('geo_trainer_progress');
+  localStorage.removeItem('geo_study_folders');
 }
 
 function setCurrentUser(user: User | null) {
-  if (user) {
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL || null
-    }));
-  } else {
-    localStorage.removeItem(AUTH_STORAGE_KEY);
-  }
-
-  auth.currentUser = user ? {
-    ...user,
-    delete: async () => {
-      localStorage.removeItem(AUTH_STORAGE_KEY);
-      setCurrentUser(null);
-    }
-  } : null;
-
+  auth.currentUser = user ? withDelete(user) : null;
   authListeners.forEach(cb => {
     try {
       cb(auth.currentUser);
@@ -68,53 +63,58 @@ function setCurrentUser(user: User | null) {
   });
 }
 
-export const auth = {
-  currentUser: getStoredUser(),
-  isLocalAdapter: true,
+export const auth: { currentUser: User | null } = {
+  currentUser: null,
 };
 
-export class GoogleAuthProvider {
-  static PROVIDER_ID = 'google.com';
+// Sessie één keer bij het laden van de pagina ophalen
+let sessionPromise: Promise<void> | null = null;
+function loadSession(): Promise<void> {
+  if (!sessionPromise) {
+    sessionPromise = apiRequest<{ user: User | null }>('/api/auth/me')
+      .then(({ user }) => {
+        auth.currentUser = user ? withDelete(user) : null;
+      })
+      .catch((err) => {
+        console.warn("Sessie ophalen mislukt:", err);
+        auth.currentUser = null;
+      });
+  }
+  return sessionPromise;
 }
 
-export async function signInWithPopup(_authInstance: typeof auth, _provider?: any): Promise<{ user: User }> {
-  // Gebruik een vast, persistent ID voor de Google account zodat alle opgeslagen mappen bewaard blijven
-  const simulatedUser: User = {
-    uid: 'local-user-google-primary',
-    email: 'leerling@geotrainer.local',
-    displayName: 'Google Account',
-    photoURL: null,
-  };
-  setCurrentUser(simulatedUser);
-  return { user: simulatedUser };
+export async function signInWithEmailAndPassword(_authInstance: typeof auth, email: string, password: string): Promise<{ user: User }> {
+  const { user } = await apiRequest<{ user: User }>('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+  setCurrentUser(user);
+  return { user: auth.currentUser! };
 }
 
-export async function signInWithEmailAndPassword(_authInstance: typeof auth, email: string, _password: string): Promise<{ user: User }> {
-  const cleanEmail = email.trim().toLowerCase();
-  const namePart = cleanEmail.split('@')[0] || 'Gebruiker';
-  const simulatedUser: User = {
-    uid: 'local-user-email-' + Math.abs(hashString(cleanEmail)).toString(36),
-    email: cleanEmail,
-    displayName: namePart.charAt(0).toUpperCase() + namePart.slice(1),
-    photoURL: null,
-  };
-  setCurrentUser(simulatedUser);
-  return { user: simulatedUser };
-}
-
-export async function createUserWithEmailAndPassword(_authInstance: typeof auth, email: string, _password: string): Promise<{ user: User }> {
-  return signInWithEmailAndPassword(_authInstance, email, _password);
+export async function createUserWithEmailAndPassword(_authInstance: typeof auth, email: string, password: string): Promise<{ user: User }> {
+  const { user } = await apiRequest<{ user: User }>('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
+  setCurrentUser(user);
+  return { user: auth.currentUser! };
 }
 
 export async function signOut(_authInstance: typeof auth): Promise<void> {
-  setCurrentUser(null);
+  try {
+    await apiRequest('/api/auth/logout', { method: 'POST' });
+  } finally {
+    clearLocalUserCache();
+    setCurrentUser(null);
+  }
 }
 
 export function onAuthStateChanged(_authInstance: typeof auth, callback: AuthStateCallback): () => void {
   authListeners.add(callback);
-  setTimeout(() => {
-    callback(auth.currentUser);
-  }, 10);
+  loadSession().then(() => {
+    if (authListeners.has(callback)) callback(auth.currentUser);
+  });
 
   return () => {
     authListeners.delete(callback);
@@ -122,7 +122,7 @@ export function onAuthStateChanged(_authInstance: typeof auth, callback: AuthSta
 }
 
 // ----------------------------------------------------
-// Datastructuur Document & Database Emulatie (localStorage)
+// Documenten: collectie 'users' → /api/user/data
 // ----------------------------------------------------
 
 export interface DocumentReference {
@@ -136,103 +136,126 @@ export interface DocumentSnapshot {
   id: string;
 }
 
-function getDocStorageKey(collection: string, id: string): string {
-  return `geo_db_${collection}_${id}`;
-}
-
-function hashString(str: string): number {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
-    hash |= 0;
-  }
-  return hash;
+interface UserDataResponse {
+  data: {
+    preferences: Record<string, any>;
+    geoStats: Record<string, any>;
+    geoProgress: Record<string, any>;
+    folders: StudyFolder[] | null;
+    settings: Record<string, string>;
+    consent: Record<string, any> | null;
+    updatedAt: string;
+  } | null;
 }
 
 export const db = {
-  type: 'local-storage-adapter',
-  version: '1.0',
-};
-
-export const app = {
-  name: 'geotrainer-applet',
-  options: {},
+  type: 'postgres-api-adapter',
+  version: '2.0',
 };
 
 export function doc(_dbInstance: any, collection: string, id: string): DocumentReference {
+  if (collection !== 'users') {
+    throw new Error(`Onbekende collectie: ${collection}`);
+  }
   return { collection, id };
 }
 
-export async function getDoc(docRef: DocumentReference): Promise<DocumentSnapshot> {
-  try {
-    const key = getDocStorageKey(docRef.collection, docRef.id);
-    const raw = localStorage.getItem(key);
-    if (!raw) {
-      return {
-        exists: () => false,
-        data: () => undefined,
-        id: docRef.id
-      };
-    }
-    const data = JSON.parse(raw);
-    return {
-      exists: () => true,
-      data: () => data,
-      id: docRef.id
-    };
-  } catch (err) {
-    console.error("Local db getDoc error:", err);
-    return {
-      exists: () => false,
-      data: () => undefined,
-      id: docRef.id
-    };
+function assertCurrentUser(docRef: DocumentReference) {
+  if (!auth.currentUser || auth.currentUser.uid !== docRef.id) {
+    throw new Error("Niet ingelogd als deze gebruiker.");
   }
+}
+
+function fetchUserData() {
+  return apiRequest<UserDataResponse>('/api/user/data').then(r => r.data);
+}
+
+function putUserData(fields: Record<string, any>) {
+  return apiRequest<{ updatedAt: string }>('/api/user/data', {
+    method: 'PUT',
+    body: JSON.stringify(fields),
+  });
+}
+
+const isEmptyObject = (v: any) => !v || (typeof v === 'object' && Object.keys(v).length === 0);
+
+export async function getDoc(docRef: DocumentReference): Promise<DocumentSnapshot> {
+  assertCurrentUser(docRef);
+  const data = await fetchUserData();
+  return {
+    exists: () => data !== null,
+    data: () => data ? {
+      // Lege voorkeuren weglaten zodat de app zijn standaardwaarden gebruikt
+      preferences: isEmptyObject(data.preferences) ? undefined : data.preferences,
+      geoStats: data.geoStats,
+      geoProgress: data.geoProgress,
+      settings: data.settings,
+      consent: data.consent,
+    } : undefined,
+    id: docRef.id,
+  };
 }
 
 export async function setDoc(docRef: DocumentReference, data: any): Promise<void> {
-  try {
-    const key = getDocStorageKey(docRef.collection, docRef.id);
-    localStorage.setItem(key, JSON.stringify(data));
-  } catch (err) {
-    console.error("Local db setDoc error:", err);
+  assertCurrentUser(docRef);
+  await putUserData({
+    preferences: data.preferences ?? {},
+    geoStats: data.geoStats ?? {},
+    geoProgress: data.geoProgress ?? {},
+  });
+}
+
+const UPDATABLE_FIELDS = ['preferences', 'geoStats', 'geoProgress'];
+
+export async function updateDoc(docRef: DocumentReference, updateData: any): Promise<void> {
+  assertCurrentUser(docRef);
+
+  const merged: Record<string, any> = {};
+  const dotted = Object.entries(updateData).filter(([prop]) => prop.includes('.'));
+
+  for (const [prop, val] of Object.entries(updateData)) {
+    if (!prop.includes('.')) merged[prop] = val;
+  }
+
+  // Velden als 'preferences.lastUpdated' samenvoegen met de bestaande waarde
+  if (dotted.some(([prop]) => !(prop.split('.')[0] in merged))) {
+    const existing = await fetchUserData();
+    for (const [prop] of dotted) {
+      const root = prop.split('.')[0];
+      if (!(root in merged)) merged[root] = structuredClone((existing as any)?.[root] ?? {});
+    }
+  }
+  for (const [prop, val] of dotted) {
+    const parts = prop.split('.');
+    let curr = merged;
+    for (let i = 0; i < parts.length - 1; i++) {
+      curr[parts[i]] = { ...(curr[parts[i]] || {}) };
+      curr = curr[parts[i]];
+    }
+    curr[parts[parts.length - 1]] = val;
+  }
+
+  const fields = Object.fromEntries(Object.entries(merged).filter(([k]) => UPDATABLE_FIELDS.includes(k)));
+  if (Object.keys(fields).length > 0) {
+    await putUserData(fields);
   }
 }
 
-export async function updateDoc(docRef: DocumentReference, updateData: any): Promise<void> {
-  try {
-    const key = getDocStorageKey(docRef.collection, docRef.id);
-    const existingRaw = localStorage.getItem(key);
-    const existing = existingRaw ? JSON.parse(existingRaw) : {};
-    
-    const merged = { ...existing };
-    for (const [prop, val] of Object.entries(updateData)) {
-      if (prop.includes('.')) {
-        const parts = prop.split('.');
-        let curr = merged;
-        for (let i = 0; i < parts.length - 1; i++) {
-          if (!curr[parts[i]]) curr[parts[i]] = {};
-          curr = curr[parts[i]];
-        }
-        curr[parts[parts.length - 1]] = val;
-      } else {
-        merged[prop] = val;
-      }
-    }
+/** Bewaart het toestemmingsbewijs (AVG art. 7) bij het account. */
+export async function saveUserConsent(consent: Record<string, any>): Promise<void> {
+  if (!auth.currentUser) return;
+  await putUserData({ consent });
+}
 
-    localStorage.setItem(key, JSON.stringify(merged));
-  } catch (err) {
-    console.error("Local db updateDoc error:", err);
-  }
+/** Volledige accountdata uit de database, voor de AVG-export. */
+export async function fetchAccountDataExport() {
+  if (!auth.currentUser) return null;
+  return fetchUserData();
 }
 
 export async function deleteDoc(docRef: DocumentReference): Promise<void> {
-  try {
-    const key = getDocStorageKey(docRef.collection, docRef.id);
-    localStorage.removeItem(key);
-  } catch (err) {
-    console.error("Local db deleteDoc error:", err);
-  }
+  assertCurrentUser(docRef);
+  await putUserData({ preferences: {}, geoStats: {}, geoProgress: {}, folders: [] });
 }
 
 // ----------------------------------------------------
@@ -264,75 +287,27 @@ export const DEFAULT_STUDY_FOLDERS: StudyFolder[] = [
   }
 ];
 
-export async function getUserStudyFolders(userId: string): Promise<StudyFolder[]> {
+export async function getUserStudyFolders(_userId: string): Promise<StudyFolder[]> {
   try {
-    const key = `geo_folders_${userId}`;
-    const raw = localStorage.getItem(key);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
-      }
+    const data = await fetchUserData();
+    if (data?.updatedAt) {
+      updateSyncState({ status: 'synced', lastSynced: data.updatedAt, error: null });
     }
-
-    // Auto-rescue: Controleer of er eerder aangemaakte mappen bestaan in localStorage
-    // (bijvoorbeeld onder een eerdere sessie, geo_study_folders of een andere sleutel)
-    const rescuedFolders: StudyFolder[] = [];
-    const seenIds = new Set<string>();
-
-    const checkAndMerge = (jsonStr: string | null) => {
-      if (!jsonStr) return;
-      try {
-        const arr = JSON.parse(jsonStr);
-        if (Array.isArray(arr)) {
-          arr.forEach((f: any) => {
-            if (f && f.id && !seenIds.has(f.id)) {
-              seenIds.add(f.id);
-              rescuedFolders.push(f);
-            }
-          });
-        }
-      } catch {}
-    };
-
-    // 1. Controleer generieke geo_study_folders
-    checkAndMerge(localStorage.getItem('geo_study_folders'));
-
-    // 2. Doorzoek alle eerdere geo_folders_* sleutels
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith('geo_folders_')) {
-        checkAndMerge(localStorage.getItem(k));
-      }
-    }
-
-    const finalFolders = (rescuedFolders.length > 0) ? rescuedFolders : DEFAULT_STUDY_FOLDERS;
-    localStorage.setItem(key, JSON.stringify(finalFolders));
-    return finalFolders;
+    // Nog nooit mappen opgeslagen → voorbeeldmappen tonen (worden bewaard bij de eerste wijziging)
+    return Array.isArray(data?.folders) ? data!.folders! : DEFAULT_STUDY_FOLDERS;
   } catch (err) {
     console.error("Error loading user study folders:", err);
+    updateSyncState({ status: 'error', error: 'Mappen konden niet geladen worden.' });
     return DEFAULT_STUDY_FOLDERS;
   }
 }
 
 export async function saveUserStudyFolders(userId: string, folders: StudyFolder[]): Promise<void> {
-  try {
-    const key = `geo_folders_${userId}`;
-    localStorage.setItem(key, JSON.stringify(folders));
-    // Sla ook op in de generieke sleutel als persistente backup
-    localStorage.setItem('geo_study_folders', JSON.stringify(folders));
-
-    // Automatische synchronisatie naar de backend service!
-    syncUserDataToBackend(userId, folders).catch((err) => {
-      console.warn("Auto-sync naar backend op de achtergrond mislukt:", err);
-    });
-  } catch (err) {
-    console.error("Error saving user study folders:", err);
-  }
+  await syncUserDataToBackend(userId, folders);
 }
 
 // ----------------------------------------------------
-// Automatische Backend Synchronisatie Service & Status
+// Synchronisatiestatus (voor de indicator in Mijn Leerstof)
 // ----------------------------------------------------
 
 export type SyncStatus = 'idle' | 'syncing' | 'synced' | 'error';
@@ -376,8 +351,9 @@ function updateSyncState(newState: Partial<SyncState>) {
 }
 
 /**
- * Verstuurt alle lokale mappen, voortgang en instellingen automatisch
- * naar de backend service (/api/user/sync).
+ * Met mappen: slaat ze op in de database.
+ * Zonder mappen: controleert enkel of de server bereikbaar is en wat de laatste opslag was
+ * (elke wijziging wordt al meteen opgeslagen, er staat dus niets klaar om te versturen).
  */
 export async function syncUserDataToBackend(userId: string, customFolders?: StudyFolder[]): Promise<boolean> {
   if (!userId) return false;
@@ -385,48 +361,17 @@ export async function syncUserDataToBackend(userId: string, customFolders?: Stud
   updateSyncState({ status: 'syncing', error: null });
 
   try {
-    const foldersToSync = customFolders || (await getUserStudyFolders(userId));
-    const statsRaw = localStorage.getItem('geo_trainer_stats');
-    const progressRaw = localStorage.getItem('geo_trainer_progress');
-    const guestPrefsRaw = localStorage.getItem('geoTrainerGuestData');
-
-    const payload = {
-      userId,
-      folders: foldersToSync,
-      stats: statsRaw ? JSON.parse(statsRaw) : {},
-      progress: progressRaw ? JSON.parse(progressRaw) : {},
-      preferences: guestPrefsRaw ? JSON.parse(guestPrefsRaw) : {},
-      syncedAt: new Date().toISOString()
-    };
-
-    const res = await fetch('/api/user/sync', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      const lastSynced = data.lastSynced || new Date().toISOString();
-      updateSyncState({ status: 'synced', lastSynced, error: null });
-      localStorage.setItem(`geo_last_synced_${userId}`, lastSynced);
-      return true;
-    } else {
-      const errData = await res.json().catch(() => ({}));
-      updateSyncState({ 
-        status: 'error', 
-        error: errData.error || 'Server gaf foutmelding bij synchronisatie' 
-      });
-      return false;
-    }
+    const lastSynced = customFolders
+      ? (await putUserData({ folders: customFolders })).updatedAt
+      : (await fetchUserData())?.updatedAt ?? new Date().toISOString();
+    updateSyncState({ status: 'synced', lastSynced, error: null });
+    return true;
   } catch (err: any) {
     console.warn("Backend sync failed:", err);
-    updateSyncState({ 
-      status: 'error', 
-      error: 'Geen verbinding met backend (data veilig lokaal bewaard)' 
+    updateSyncState({
+      status: 'error',
+      error: err?.message || 'Geen verbinding met de server',
     });
     return false;
   }
 }
-
-

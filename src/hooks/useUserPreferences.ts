@@ -1,5 +1,21 @@
 import { useState, useEffect } from 'react';
-import { auth, db, doc, getDoc, setDoc, updateDoc, onAuthStateChanged, User } from '../lib/dbAdapter';
+import { auth, db, doc, getDoc, setDoc, updateDoc, onAuthStateChanged, saveUserConsent, User } from '../lib/dbAdapter';
+import { applySettings, pushSettingsToServer } from '../lib/userSettings';
+import { getStoredConsent } from '../components/legal/LegalDocuments';
+
+// Instellingen uit de database winnen; heeft het account er nog geen, dan nemen we die van dit toestel over.
+// Idem voor de toestemming: wie al lokaal akkoord ging, krijgt dat bewijs ook bij het account.
+function syncSettingsAndConsent(data: { settings?: Record<string, string>; consent?: any } | undefined) {
+  if (data?.settings && Object.keys(data.settings).length > 0) {
+    applySettings(data.settings);
+  } else {
+    pushSettingsToServer();
+  }
+  const localConsent = getStoredConsent();
+  if (localConsent && !data?.consent?.accepted) {
+    saveUserConsent(localConsent).catch(err => console.warn("Toestemming opslaan mislukt:", err));
+  }
+}
 
 export interface UserPreferences {
   selectedRegions: string[];
@@ -59,6 +75,7 @@ export function useUserPreferences() {
               localStorage.setItem('geo_trainer_progress', JSON.stringify(data.geoProgress));
               setProgress(data.geoProgress);
             }
+            syncSettingsAndConsent(data);
           } else {
             // New user! Check if there is local guest data
             const localData = localStorage.getItem(GUEST_STORAGE_KEY);
@@ -83,6 +100,7 @@ export function useUserPreferences() {
                  geoStats: {},
                  geoProgress: {},
                });
+               syncSettingsAndConsent(undefined);
             }
           }
         } catch (error) {
@@ -134,6 +152,7 @@ export function useUserPreferences() {
         geoProgress: localProgress,
       });
       
+      syncSettingsAndConsent(undefined);
       setPreferences(initialPrefs);
       setStats(localStats);
       setProgress(localProgress);

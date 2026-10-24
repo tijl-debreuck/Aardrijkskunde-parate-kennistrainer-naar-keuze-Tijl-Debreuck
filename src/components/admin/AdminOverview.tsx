@@ -17,6 +17,10 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ stats, theme, onNa
     isPasswordConfigured: boolean;
     uptimeSeconds: number;
     timestamp: string;
+    databaseOk: boolean;
+    users: number;
+    activeSessions: number;
+    customItems: number;
   } | null>(null);
   const [statusLoading, setStatusLoading] = useState(true);
   
@@ -38,7 +42,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ stats, theme, onNa
   const fetchStatus = async () => {
     setStatusLoading(true);
     try {
-      const res = await fetch('/api/admin/status');
+      const res = await fetch('/api/admin/status', { credentials: 'same-origin' });
       if (res.ok) {
         const data = await res.json();
         setServerStatus(data);
@@ -165,7 +169,7 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ stats, theme, onNa
             </div>
             <div>
               <h3 className="font-bold text-lg">Systeem Status & Service Indicators</h3>
-              <p className="text-xs text-slate-400">Real-time status van Firebase services, API-connectiviteit en gegevensopslag</p>
+              <p className="text-xs text-slate-400">Real-time status van de API, de PostgreSQL-database en gegevensopslag</p>
             </div>
           </div>
           <button 
@@ -195,36 +199,46 @@ export const AdminOverview: React.FC<AdminOverviewProps> = ({ stats, theme, onNa
             </span>
           </div>
 
-          {/* Firebase Auth */}
+          {/* Accounts */}
           <div className={`p-4 rounded-2xl border flex items-center justify-between ${
             theme === 'dark' ? 'bg-slate-950/60 border-slate-800/80' : 'bg-slate-50 border-slate-200/80'
           }`}>
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
               <div>
-                <p className="text-xs font-bold">Firebase Auth</p>
-                <p className="text-[11px] text-slate-400">Gebruikersauthenticatie</p>
+                <p className="text-xs font-bold">Accounts</p>
+                <p className="text-[11px] text-slate-400">
+                  {serverStatus ? `${serverStatus.activeSessions} actieve sessies` : 'Gebruikersauthenticatie'}
+                </p>
               </div>
             </div>
             <span className="text-[10px] font-mono font-bold text-emerald-500 px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-              Actief
+              {serverStatus ? `${serverStatus.users} accounts` : '—'}
             </span>
           </div>
 
-          {/* Firestore DB */}
+          {/* PostgreSQL */}
           <div className={`p-4 rounded-2xl border flex items-center justify-between ${
             theme === 'dark' ? 'bg-slate-950/60 border-slate-800/80' : 'bg-slate-50 border-slate-200/80'
           }`}>
             <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+              <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${serverStatus?.databaseOk === false ? 'bg-rose-500' : 'bg-emerald-500 animate-pulse'}`}></span>
               <div>
-                <p className="text-xs font-bold">Firestore DB</p>
-                <p className="text-[11px] text-slate-400">Cloud Databank Sync</p>
+                <p className="text-xs font-bold">PostgreSQL</p>
+                <p className="text-[11px] text-slate-400">
+                  {serverStatus ? `${serverStatus.customItems} extra quizitems` : 'Databank'}
+                </p>
               </div>
             </div>
-            <span className="text-[10px] font-mono font-bold text-emerald-500 px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-              Verbonden
-            </span>
+            {serverStatus?.databaseOk === false ? (
+              <span className="text-[10px] font-mono font-bold text-rose-500 px-2 py-0.5 rounded-lg bg-rose-500/10 border border-rose-500/20">
+                Fout
+              </span>
+            ) : (
+              <span className="text-[10px] font-mono font-bold text-emerald-500 px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                {serverStatus ? 'Verbonden' : '—'}
+              </span>
+            )}
           </div>
 
           {/* LocalStorage & Caching */}

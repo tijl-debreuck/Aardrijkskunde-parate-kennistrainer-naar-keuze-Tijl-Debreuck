@@ -1,3 +1,5 @@
+import { saveSetting } from '../lib/userSettings';
+
 // Web Audio API Synthesizer for high-fidelity interactive game sound effects
 class SoundEngine {
   private ctx: AudioContext | null = null;
@@ -11,7 +13,7 @@ class SoundEngine {
 
   setMuted(muted: boolean) {
     this.isMuted = muted;
-    localStorage.setItem('geoSoundMuted', String(muted));
+    saveSetting('soundMuted', String(muted));
   }
 
   getMuted(): boolean {

@@ -5,6 +5,20 @@ import {
   RotateCcw, CheckCircle, Cloud, HardDrive, RefreshCw
 } from 'lucide-react';
 import { StudyFolder } from '../../types/geography';
+import { getUserStudyFolders, saveUserStudyFolders, DEFAULT_STUDY_FOLDERS } from '../../lib/dbAdapter';
+
+interface AccountSummary {
+  uid: string;
+  email: string;
+  displayName: string | null;
+  createdAt: string;
+  lastActive: string | null;
+  totalAnswered: number;
+  folderCount: number;
+}
+
+const formatDate = (iso: string | null) =>
+  iso ? new Date(iso).toLocaleDateString('nl-BE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
 
 interface AdminUsersProps {
   stats: UserStats;
@@ -29,23 +43,40 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ stats, theme, onClearSta
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
+  const [accounts, setAccounts] = useState<AccountSummary[]>([]);
+  const [accountsLoading, setAccountsLoading] = useState(true);
+  const [accountsError, setAccountsError] = useState<string | null>(null);
+
   const loadFolders = () => {
-    try {
-      const userKey = user?.uid ? `geo_folders_${user.uid}` : null;
-      const stored = (userKey && localStorage.getItem(userKey)) || localStorage.getItem('geo_study_folders');
-      if (stored) {
-        setFolders(JSON.parse(stored));
-      } else {
-        setFolders([]);
-      }
-    } catch (_e) {
+    if (!user?.uid) {
       setFolders([]);
+      return;
+    }
+    getUserStudyFolders(user.uid).then(setFolders).catch(() => setFolders([]));
+  };
+
+  const loadAccounts = async () => {
+    setAccountsLoading(true);
+    setAccountsError(null);
+    try {
+      const res = await fetch('/api/admin/users', { credentials: 'same-origin' });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Accounts laden mislukt.');
+      setAccounts(data.users);
+    } catch (err: any) {
+      setAccountsError(err.message);
+    } finally {
+      setAccountsLoading(false);
     }
   };
 
   useEffect(() => {
     loadFolders();
   }, [user?.uid]);
+
+  useEffect(() => {
+    loadAccounts();
+  }, []);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -56,12 +87,11 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ stats, theme, onClearSta
     setConfirmModal({
       isOpen: true,
       title: 'Aangepaste Leermapjes Wissen?',
-      description: 'Weet je zeker dat je alle lokaal aangemaakte studiemapjes wilt wissen? De standaard voorbeeldmappen worden daarna opnieuw aangemaakt bij het herladen.',
-      onConfirm: () => {
+      description: 'Weet je zeker dat je alle studiemapjes van je eigen account wilt wissen? De standaard voorbeeldmappen worden teruggezet.',
+      onConfirm: async () => {
         if (user?.uid) {
-          localStorage.removeItem(`geo_folders_${user.uid}`);
+          await saveUserStudyFolders(user.uid, DEFAULT_STUDY_FOLDERS);
         }
-        localStorage.removeItem('geo_study_folders');
         loadFolders();
         showToast('Leermapjes succesvol gewist!');
         setConfirmModal(prev => ({ ...prev, isOpen: false }));
@@ -178,46 +208,65 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ stats, theme, onClearSta
         </div>
       </div>
 
-      {/* Cloud & Account Status */}
+      {/* Geregistreerde accounts (uit de database) */}
       <div className={`p-6 rounded-3xl border shadow-xl ${
         theme === 'dark' ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
       }`}>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-500 border border-blue-500/20">
-            <Cloud className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="font-bold text-lg">Actieve Account & Gegevensopslag</h3>
-            <p className="text-xs text-slate-400">Status van lokale browseropslag en backend adapter</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className={`p-4 rounded-2xl border ${
-            theme === 'dark' ? 'bg-slate-950/60 border-slate-800' : 'bg-slate-50 border-slate-200'
-          }`}>
-            <p className="text-xs font-mono font-bold text-slate-400 uppercase">Actieve Gebruiker</p>
-            <p className="text-sm font-bold mt-1">
-              {user ? (user.email || user.displayName || user.uid) : 'Gastgebruiker (Niet ingelogd)'}
-            </p>
-            <p className="text-[11px] text-slate-400 mt-1">
-              {user ? 'Prestaties worden lokaal bewaard en staan gereed voor synchronisatie.' : 'Gegevens worden veilig lokaal in de browser bewaard.'}
-            </p>
-          </div>
-
-          <div className={`p-4 rounded-2xl border ${
-            theme === 'dark' ? 'bg-slate-950/60 border-slate-800' : 'bg-slate-50 border-slate-200'
-          }`}>
-            <p className="text-xs font-mono font-bold text-slate-400 uppercase">Opslag Medium</p>
-            <div className="flex items-center gap-2 mt-1">
-              <HardDrive className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm font-bold">LocalStorage (Offline-first)</span>
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-500 border border-blue-500/20">
+              <Cloud className="w-5 h-5" />
             </div>
-            <p className="text-[11px] text-slate-400 mt-1">
-              Snelle lokale werking met voorbereide adapter voor nieuwe databasekoppeling.
-            </p>
+            <div>
+              <h3 className="font-bold text-lg">Geregistreerde Accounts</h3>
+              <p className="text-xs text-slate-400">
+                {accountsLoading ? 'Laden…' : `${accounts.length} accounts in de database`}
+                {user ? ` • jij bent ingelogd als ${user.email}` : ''}
+              </p>
+            </div>
           </div>
+          <button
+            onClick={loadAccounts}
+            className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition-all"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${accountsLoading ? 'animate-spin' : ''}`} />
+            <span>Vernieuw</span>
+          </button>
         </div>
+
+        {accountsError ? (
+          <p className="text-xs text-rose-500">{accountsError}</p>
+        ) : accounts.length === 0 && !accountsLoading ? (
+          <div className="text-center py-8">
+            <HardDrive className="w-8 h-8 text-slate-400 mx-auto mb-2 opacity-60" />
+            <p className="text-xs text-slate-400">Nog geen accounts aangemaakt.</p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto max-h-80 overflow-y-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="text-left text-slate-400 font-mono uppercase">
+                  <th className="py-2 pr-4">E-mail</th>
+                  <th className="py-2 pr-4">Aangemaakt</th>
+                  <th className="py-2 pr-4">Laatst actief</th>
+                  <th className="py-2 pr-4 text-right">Antwoorden</th>
+                  <th className="py-2 text-right">Mapjes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {accounts.map(acc => (
+                  <tr key={acc.uid} className="border-t border-slate-200 dark:border-slate-800">
+                    <td className="py-2 pr-4 font-semibold truncate max-w-[220px]">{acc.email}</td>
+                    <td className="py-2 pr-4 text-slate-400">{formatDate(acc.createdAt)}</td>
+                    <td className="py-2 pr-4 text-slate-400">{formatDate(acc.lastActive)}</td>
+                    <td className="py-2 pr-4 text-right font-mono">{acc.totalAnswered}</td>
+                    <td className="py-2 text-right font-mono">{acc.folderCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* Leermapjes & Moeilijke Onderwerpen */}
@@ -234,7 +283,9 @@ export const AdminUsers: React.FC<AdminUsersProps> = ({ stats, theme, onClearSta
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">Aangemaakte Leermapjes</h3>
-                  <p className="text-xs text-slate-400">{folders.length} mapjes geregistreerd in opslag</p>
+                  <p className="text-xs text-slate-400">
+                    {user ? `${folders.length} mapjes in jouw account` : 'Log in om je eigen mapjes te zien'}
+                  </p>
                 </div>
               </div>
               <button
