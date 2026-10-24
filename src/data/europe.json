@@ -1,0 +1,1860 @@
+{
+  "countries": [
+    {
+      "id": "eu-l-isl",
+      "name": "IJsland",
+      "capital": "Reykjavik",
+      "category": "country",
+      "coordinates": [
+        -19.0208,
+        64.9631
+      ],
+      "polygon": [
+        [
+          -24,
+          66
+        ],
+        [
+          -13,
+          66
+        ],
+        [
+          -13,
+          63
+        ],
+        [
+          -24,
+          63
+        ],
+        [
+          -24,
+          66
+        ]
+      ],
+      "alternatives": [
+        "Iceland",
+        "Ijsland"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-nor",
+      "name": "Noorwegen",
+      "capital": "Oslo",
+      "category": "country",
+      "coordinates": [
+        8.4689,
+        60.472
+      ],
+      "polygon": [
+        [
+          4,
+          58
+        ],
+        [
+          4,
+          71
+        ],
+        [
+          32,
+          71
+        ],
+        [
+          15,
+          60
+        ],
+        [
+          4,
+          58
+        ]
+      ],
+      "alternatives": [
+        "Norway"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-swe",
+      "name": "Zweden",
+      "capital": "Stockholm",
+      "category": "country",
+      "coordinates": [
+        18.6435,
+        60.1282
+      ],
+      "polygon": [
+        [
+          11,
+          55
+        ],
+        [
+          11,
+          69
+        ],
+        [
+          24,
+          69
+        ],
+        [
+          18,
+          55
+        ],
+        [
+          11,
+          55
+        ]
+      ],
+      "alternatives": [
+        "Sweden"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-fin",
+      "name": "Finland",
+      "capital": "Helsinki",
+      "category": "country",
+      "coordinates": [
+        25.7482,
+        61.9241
+      ],
+      "polygon": [
+        [
+          20,
+          60
+        ],
+        [
+          20,
+          70
+        ],
+        [
+          32,
+          70
+        ],
+        [
+          31,
+          60
+        ],
+        [
+          20,
+          60
+        ]
+      ],
+      "alternatives": [
+        "Suomi"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-den",
+      "name": "Denemarken",
+      "capital": "Kopenhagen",
+      "category": "country",
+      "coordinates": [
+        9.5018,
+        56.2639
+      ],
+      "polygon": [
+        [
+          8,
+          54.5
+        ],
+        [
+          8,
+          57.8
+        ],
+        [
+          12.7,
+          57.8
+        ],
+        [
+          12.7,
+          54.5
+        ],
+        [
+          8,
+          54.5
+        ]
+      ],
+      "alternatives": [
+        "Denmark",
+        "Danmark"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-bel",
+      "name": "Belgi\u00eb",
+      "capital": "Brussel",
+      "category": "country",
+      "coordinates": [
+        4.4699,
+        50.5039
+      ],
+      "polygon": [
+        [
+          2.5,
+          51.5
+        ],
+        [
+          6.4,
+          51.5
+        ],
+        [
+          6.4,
+          49.5
+        ],
+        [
+          2.5,
+          49.5
+        ],
+        [
+          2.5,
+          51.5
+        ]
+      ],
+      "alternatives": [
+        "Belgium",
+        "Belgie",
+        "Belgique"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-ned",
+      "name": "Nederland",
+      "capital": "Amsterdam",
+      "category": "country",
+      "coordinates": [
+        5.2913,
+        52.1326
+      ],
+      "polygon": [
+        [
+          3.3,
+          53.6
+        ],
+        [
+          7.2,
+          53.6
+        ],
+        [
+          7.2,
+          50.7
+        ],
+        [
+          3.3,
+          50.7
+        ],
+        [
+          3.3,
+          53.6
+        ]
+      ],
+      "alternatives": [
+        "Netherlands",
+        "Holland",
+        "Nederlanden"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-lux",
+      "name": "Luxemburg",
+      "capital": "Luxemburg",
+      "category": "country",
+      "coordinates": [
+        6.1296,
+        49.8153
+      ],
+      "polygon": [
+        [
+          5.7,
+          50.2
+        ],
+        [
+          6.5,
+          50.2
+        ],
+        [
+          6.5,
+          49.4
+        ],
+        [
+          5.7,
+          49.4
+        ],
+        [
+          5.7,
+          50.2
+        ]
+      ],
+      "alternatives": [
+        "Luxembourg",
+        "Groothertogdom Luxemburg"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-gbr",
+      "name": "Verenigd Koninkrijk",
+      "capital": "Londen",
+      "category": "country",
+      "coordinates": [
+        -3.436,
+        55.3781
+      ],
+      "polygon": [
+        [
+          -8,
+          50
+        ],
+        [
+          -8,
+          61
+        ],
+        [
+          2,
+          61
+        ],
+        [
+          2,
+          50
+        ],
+        [
+          -8,
+          50
+        ]
+      ],
+      "alternatives": [
+        "UK",
+        "United Kingdom",
+        "Groot-Brittanni\u00eb",
+        "Engeland",
+        "Great Britain"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-ier",
+      "name": "Ierland",
+      "capital": "Dublin",
+      "category": "country",
+      "coordinates": [
+        -8.2439,
+        53.4129
+      ],
+      "polygon": [
+        [
+          -10.5,
+          51.3
+        ],
+        [
+          -5.9,
+          55.4
+        ],
+        [
+          -5.9,
+          51.3
+        ],
+        [
+          -10.5,
+          51.3
+        ]
+      ],
+      "alternatives": [
+        "Ireland",
+        "Eire"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-fra",
+      "name": "Frankrijk",
+      "capital": "Parijs",
+      "category": "country",
+      "coordinates": [
+        2.2137,
+        46.2276
+      ],
+      "polygon": [
+        [
+          -5,
+          51
+        ],
+        [
+          8.2,
+          51
+        ],
+        [
+          7.5,
+          42.4
+        ],
+        [
+          -1.8,
+          43.3
+        ],
+        [
+          -5,
+          51
+        ]
+      ],
+      "alternatives": [
+        "France",
+        "Frankrijk"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-dui",
+      "name": "Duitsland",
+      "capital": "Berlijn",
+      "category": "country",
+      "coordinates": [
+        10.4515,
+        51.1657
+      ],
+      "polygon": [
+        [
+          5.9,
+          55
+        ],
+        [
+          15,
+          55
+        ],
+        [
+          15,
+          47.3
+        ],
+        [
+          5.9,
+          47.3
+        ],
+        [
+          5.9,
+          55
+        ]
+      ],
+      "alternatives": [
+        "Germany",
+        "Deutschland",
+        "Duitsland"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-oos",
+      "name": "Oostenrijk",
+      "capital": "Wenen",
+      "category": "country",
+      "coordinates": [
+        14.5501,
+        47.5162
+      ],
+      "polygon": [
+        [
+          9.5,
+          49
+        ],
+        [
+          17.1,
+          49
+        ],
+        [
+          16.5,
+          46.4
+        ],
+        [
+          9.5,
+          46.4
+        ],
+        [
+          9.5,
+          49
+        ]
+      ],
+      "alternatives": [
+        "Austria",
+        "\u00d6sterreich",
+        "Osterreich"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-zwi",
+      "name": "Zwitserland",
+      "capital": "Bern",
+      "category": "country",
+      "coordinates": [
+        8.2275,
+        46.8182
+      ],
+      "polygon": [
+        [
+          5.9,
+          47.8
+        ],
+        [
+          10.5,
+          47.8
+        ],
+        [
+          10.5,
+          45.8
+        ],
+        [
+          5.9,
+          45.8
+        ],
+        [
+          5.9,
+          47.8
+        ]
+      ],
+      "alternatives": [
+        "Switzerland",
+        "Schweiz",
+        "Zwitserland"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-ita",
+      "name": "Itali\u00eb",
+      "capital": "Rome",
+      "category": "country",
+      "coordinates": [
+        12.5674,
+        41.8719
+      ],
+      "polygon": [
+        [
+          6.6,
+          47
+        ],
+        [
+          18.5,
+          42
+        ],
+        [
+          15.5,
+          36.5
+        ],
+        [
+          6.6,
+          36.5
+        ],
+        [
+          6.6,
+          47
+        ]
+      ],
+      "alternatives": [
+        "Italy",
+        "Italia"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-por",
+      "name": "Portugal",
+      "capital": "Lissabon",
+      "category": "country",
+      "coordinates": [
+        -8.2245,
+        39.3999
+      ],
+      "polygon": [
+        [
+          -9.5,
+          42.2
+        ],
+        [
+          -6.2,
+          42.2
+        ],
+        [
+          -6.2,
+          37
+        ],
+        [
+          -9.5,
+          37
+        ],
+        [
+          -9.5,
+          42.2
+        ]
+      ],
+      "alternatives": [
+        "Portugal"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-spa",
+      "name": "Spanje",
+      "capital": "Madrid",
+      "category": "country",
+      "coordinates": [
+        -3.7492,
+        40.4637
+      ],
+      "polygon": [
+        [
+          -9.5,
+          44
+        ],
+        [
+          3.3,
+          44
+        ],
+        [
+          3.3,
+          36
+        ],
+        [
+          -9.5,
+          36
+        ],
+        [
+          -9.5,
+          44
+        ]
+      ],
+      "alternatives": [
+        "Spain",
+        "Espa\u00f1a",
+        "Espana"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "eu-l-pol",
+      "name": "Polen",
+      "capital": "Warschau",
+      "category": "country",
+      "coordinates": [
+        19.1451,
+        51.9194
+      ],
+      "polygon": [
+        [
+          14.1,
+          54.9
+        ],
+        [
+          24.1,
+          54.9
+        ],
+        [
+          24.1,
+          49
+        ],
+        [
+          14.1,
+          49
+        ],
+        [
+          14.1,
+          54.9
+        ]
+      ],
+      "alternatives": [
+        "Poland",
+        "Polska"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-tsj",
+      "name": "Tsjechi\u00eb",
+      "capital": "Praag",
+      "category": "country",
+      "coordinates": [
+        15.473,
+        49.8175
+      ],
+      "polygon": [
+        [
+          12,
+          51.1
+        ],
+        [
+          18.9,
+          51.1
+        ],
+        [
+          18.9,
+          48.5
+        ],
+        [
+          12,
+          48.5
+        ],
+        [
+          12,
+          51.1
+        ]
+      ],
+      "alternatives": [
+        "Czechia",
+        "Czech Republic",
+        "Tsjechie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-slo",
+      "name": "Slowakije",
+      "capital": "Bratislava",
+      "category": "country",
+      "coordinates": [
+        19.699,
+        48.669
+      ],
+      "polygon": [
+        [
+          16.8,
+          49.6
+        ],
+        [
+          22.6,
+          49.6
+        ],
+        [
+          22.6,
+          47.7
+        ],
+        [
+          16.8,
+          47.7
+        ],
+        [
+          16.8,
+          49.6
+        ]
+      ],
+      "alternatives": [
+        "Slovakia",
+        "Slovensko"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-hon",
+      "name": "Hongarije",
+      "capital": "Boedapest",
+      "category": "country",
+      "coordinates": [
+        19.5033,
+        47.1625
+      ],
+      "polygon": [
+        [
+          16,
+          48.6
+        ],
+        [
+          22.9,
+          48.6
+        ],
+        [
+          22.9,
+          45.7
+        ],
+        [
+          16,
+          45.7
+        ],
+        [
+          16,
+          48.6
+        ]
+      ],
+      "alternatives": [
+        "Hungary",
+        "Magyarorszag"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-kro",
+      "name": "Kroati\u00eb",
+      "capital": "Zagreb",
+      "category": "country",
+      "coordinates": [
+        15.2,
+        45.1
+      ],
+      "polygon": [
+        [
+          13.5,
+          46.5
+        ],
+        [
+          19.5,
+          46.5
+        ],
+        [
+          19.5,
+          42.5
+        ],
+        [
+          13.5,
+          42.5
+        ],
+        [
+          13.5,
+          46.5
+        ]
+      ],
+      "alternatives": [
+        "Croatia",
+        "Kroatie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-slv",
+      "name": "Sloveni\u00eb",
+      "capital": "Ljubljana",
+      "category": "country",
+      "coordinates": [
+        14.9955,
+        46.1512
+      ],
+      "polygon": [
+        [
+          13.3,
+          46.9
+        ],
+        [
+          16.6,
+          46.9
+        ],
+        [
+          16.6,
+          45.4
+        ],
+        [
+          13.3,
+          45.4
+        ],
+        [
+          13.3,
+          46.9
+        ]
+      ],
+      "alternatives": [
+        "Slovenia"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-ser",
+      "name": "Servi\u00eb",
+      "capital": "Belgrado",
+      "category": "country",
+      "coordinates": [
+        21.0059,
+        44.0165
+      ],
+      "polygon": [
+        [
+          18.8,
+          46.2
+        ],
+        [
+          23,
+          46.2
+        ],
+        [
+          23,
+          42.2
+        ],
+        [
+          18.8,
+          42.2
+        ],
+        [
+          18.8,
+          46.2
+        ]
+      ],
+      "alternatives": [
+        "Serbia"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-mon",
+      "name": "Montenegro",
+      "capital": "Podgorica",
+      "category": "country",
+      "coordinates": [
+        19.26,
+        42.7
+      ],
+      "polygon": [
+        [
+          18.4,
+          43.6
+        ],
+        [
+          20.4,
+          43.6
+        ],
+        [
+          20.4,
+          41.8
+        ],
+        [
+          18.4,
+          41.8
+        ],
+        [
+          18.4,
+          43.6
+        ]
+      ],
+      "alternatives": [
+        "Crna Gora"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-kos",
+      "name": "Kosovo",
+      "capital": "Pristina",
+      "category": "country",
+      "coordinates": [
+        20.903,
+        42.6026
+      ],
+      "polygon": [
+        [
+          19.9,
+          43.3
+        ],
+        [
+          21.8,
+          43.3
+        ],
+        [
+          21.8,
+          41.8
+        ],
+        [
+          19.9,
+          41.8
+        ],
+        [
+          19.9,
+          43.3
+        ]
+      ],
+      "alternatives": [
+        "Kosova"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-alb",
+      "name": "Albani\u00eb",
+      "capital": "Tirana",
+      "category": "country",
+      "coordinates": [
+        20.1683,
+        41.1533
+      ],
+      "polygon": [
+        [
+          19.2,
+          42.7
+        ],
+        [
+          21.1,
+          42.7
+        ],
+        [
+          21.1,
+          39.6
+        ],
+        [
+          19.2,
+          39.6
+        ],
+        [
+          19.2,
+          42.7
+        ]
+      ],
+      "alternatives": [
+        "Albania"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-bos",
+      "name": "Bosni\u00eb en Herzegovina",
+      "capital": "Sarajevo",
+      "category": "country",
+      "coordinates": [
+        17.6791,
+        43.9159
+      ],
+      "polygon": [
+        [
+          15.7,
+          45.3
+        ],
+        [
+          19.6,
+          45.3
+        ],
+        [
+          19.6,
+          42.5
+        ],
+        [
+          15.7,
+          42.5
+        ],
+        [
+          15.7,
+          45.3
+        ]
+      ],
+      "alternatives": [
+        "Bosnia & Herzegovina",
+        "Bosnia",
+        "Bosnie",
+        "Bosnie en Herzegovina"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-nma",
+      "name": "Noord-Macedoni\u00eb",
+      "capital": "Skopje",
+      "category": "country",
+      "coordinates": [
+        21.7453,
+        41.6086
+      ],
+      "polygon": [
+        [
+          20.5,
+          42.4
+        ],
+        [
+          23,
+          42.4
+        ],
+        [
+          23,
+          40.8
+        ],
+        [
+          20.5,
+          40.8
+        ],
+        [
+          20.5,
+          42.4
+        ]
+      ],
+      "alternatives": [
+        "North Macedonia",
+        "Macedoni\u00eb"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-gri",
+      "name": "Griekenland",
+      "capital": "Athene",
+      "category": "country",
+      "coordinates": [
+        21.8243,
+        39.0742
+      ],
+      "polygon": [
+        [
+          19,
+          41.8
+        ],
+        [
+          26.6,
+          41.8
+        ],
+        [
+          26.6,
+          34.8
+        ],
+        [
+          19,
+          34.8
+        ],
+        [
+          19,
+          41.8
+        ]
+      ],
+      "alternatives": [
+        "Greece",
+        "Hellas"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-bul",
+      "name": "Bulgarije",
+      "capital": "Sofia",
+      "category": "country",
+      "coordinates": [
+        25.4858,
+        42.7339
+      ],
+      "polygon": [
+        [
+          22.3,
+          44.3
+        ],
+        [
+          28.6,
+          44.3
+        ],
+        [
+          28.6,
+          41.2
+        ],
+        [
+          22.3,
+          41.2
+        ],
+        [
+          22.3,
+          44.3
+        ]
+      ],
+      "alternatives": [
+        "Bulgaria"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-roe",
+      "name": "Roemeni\u00eb",
+      "capital": "Boekarest",
+      "category": "country",
+      "coordinates": [
+        24.9668,
+        45.9432
+      ],
+      "polygon": [
+        [
+          20.2,
+          48.3
+        ],
+        [
+          29.7,
+          48.3
+        ],
+        [
+          29.7,
+          43.6
+        ],
+        [
+          20.2,
+          43.6
+        ],
+        [
+          20.2,
+          48.3
+        ]
+      ],
+      "alternatives": [
+        "Romania",
+        "Roemenie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-mol",
+      "name": "Moldavi\u00eb",
+      "capital": "Chisinau",
+      "category": "country",
+      "coordinates": [
+        28.3699,
+        47.4116
+      ],
+      "polygon": [
+        [
+          26.6,
+          48.5
+        ],
+        [
+          30.2,
+          48.5
+        ],
+        [
+          30.2,
+          45.6
+        ],
+        [
+          26.6,
+          45.6
+        ],
+        [
+          26.6,
+          48.5
+        ]
+      ],
+      "alternatives": [
+        "Moldova",
+        "Moldavie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-oek",
+      "name": "Oekra\u00efne",
+      "capital": "Kiev",
+      "category": "country",
+      "coordinates": [
+        31.1656,
+        48.3794
+      ],
+      "polygon": [
+        [
+          22,
+          52.4
+        ],
+        [
+          40.2,
+          52.4
+        ],
+        [
+          40.2,
+          44.3
+        ],
+        [
+          22,
+          44.3
+        ],
+        [
+          22,
+          52.4
+        ]
+      ],
+      "alternatives": [
+        "Ukraine",
+        "Oekraine"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-wit",
+      "name": "Wit-Rusland",
+      "capital": "Minsk",
+      "category": "country",
+      "coordinates": [
+        27.9534,
+        53.7098
+      ],
+      "polygon": [
+        [
+          23.1,
+          56.2
+        ],
+        [
+          32.8,
+          56.2
+        ],
+        [
+          32.8,
+          51.2
+        ],
+        [
+          23.1,
+          51.2
+        ],
+        [
+          23.1,
+          56.2
+        ]
+      ],
+      "alternatives": [
+        "Belarus",
+        "Wit Rusland"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-lit",
+      "name": "Litouwen",
+      "capital": "Vilnius",
+      "category": "country",
+      "coordinates": [
+        23.8813,
+        55.1694
+      ],
+      "polygon": [
+        [
+          21,
+          56.4
+        ],
+        [
+          26.9,
+          56.4
+        ],
+        [
+          26.9,
+          53.9
+        ],
+        [
+          21,
+          53.9
+        ],
+        [
+          21,
+          56.4
+        ]
+      ],
+      "alternatives": [
+        "Lithuania"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-let",
+      "name": "Letland",
+      "capital": "Riga",
+      "category": "country",
+      "coordinates": [
+        26.3351,
+        56.8796
+      ],
+      "polygon": [
+        [
+          21,
+          58.1
+        ],
+        [
+          28.2,
+          58.1
+        ],
+        [
+          28.2,
+          55.7
+        ],
+        [
+          21,
+          55.7
+        ],
+        [
+          21,
+          58.1
+        ]
+      ],
+      "alternatives": [
+        "Latvia"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-est",
+      "name": "Estland",
+      "capital": "Tallinn",
+      "category": "country",
+      "coordinates": [
+        25.0136,
+        58.5953
+      ],
+      "polygon": [
+        [
+          21.8,
+          59.7
+        ],
+        [
+          28.2,
+          59.7
+        ],
+        [
+          28.2,
+          57.5
+        ],
+        [
+          21.8,
+          57.5
+        ],
+        [
+          21.8,
+          59.7
+        ]
+      ],
+      "alternatives": [
+        "Estonia"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-rus",
+      "name": "Rusland (Europees deel)",
+      "capital": "Moskou",
+      "category": "country",
+      "coordinates": [
+        37.6173,
+        55.7558
+      ],
+      "polygon": [
+        [
+          30,
+          70
+        ],
+        [
+          60,
+          70
+        ],
+        [
+          60,
+          50
+        ],
+        [
+          30,
+          50
+        ],
+        [
+          30,
+          70
+        ]
+      ],
+      "alternatives": [
+        "Russia",
+        "Rusland",
+        "Russia (European part)"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-mal",
+      "name": "Malta",
+      "capital": "Valletta",
+      "category": "country",
+      "coordinates": [
+        14.3754,
+        35.9375
+      ],
+      "polygon": [
+        [
+          14.1,
+          36.1
+        ],
+        [
+          14.6,
+          36.1
+        ],
+        [
+          14.6,
+          35.7
+        ],
+        [
+          14.1,
+          35.7
+        ],
+        [
+          14.1,
+          36.1
+        ]
+      ],
+      "alternatives": [
+        "Malte"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-l-cyp",
+      "name": "Cyprus",
+      "capital": "Nicosia",
+      "category": "country",
+      "coordinates": [
+        33.4299,
+        35.1264
+      ],
+      "polygon": [
+        [
+          32.2,
+          35.7
+        ],
+        [
+          34.6,
+          35.7
+        ],
+        [
+          34.6,
+          34.5
+        ],
+        [
+          32.2,
+          34.5
+        ],
+        [
+          32.2,
+          35.7
+        ]
+      ],
+      "alternatives": [
+        "Chypre"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "seas": [
+    {
+      "id": "eu-s-noordzee",
+      "name": "Noordzee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-oostzee",
+      "name": "Oostzee",
+      "category": "sea",
+      "alternatives": [
+        "Baltische Zee"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-middellandse",
+      "name": "Middellandse Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-zwarte",
+      "name": "Zwarte Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-kaspische",
+      "name": "Kaspische Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-ijszee",
+      "name": "Noordelijke IJszee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-adriatische",
+      "name": "Adriatische Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-ionische",
+      "name": "Ionische Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-egeische",
+      "name": "Ege\u00efsche Zee",
+      "category": "sea",
+      "alternatives": [
+        "Egeische Zee"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-tyrreense",
+      "name": "Tyrreense Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-ierse",
+      "name": "Ierse Zee",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-atlantische",
+      "name": "Atlantische Oceaan",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-bosporus",
+      "name": "Bosporus",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-gibraltar",
+      "name": "Straat van Gibraltar",
+      "category": "sea",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-s-kanaal",
+      "name": "Het Kanaal",
+      "category": "sea",
+      "alternatives": [
+        "The Channel",
+        "Engels Kanaal"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "rivers": [
+    {
+      "id": "eu-r-rijn",
+      "name": "Rijn",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-don",
+      "name": "Don",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-oder",
+      "name": "Oder",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-wolga",
+      "name": "Wolga",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-loire",
+      "name": "Loire",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-seine",
+      "name": "Seine",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-dnjepr",
+      "name": "Dnjepr",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-theems",
+      "name": "Theems",
+      "category": "river",
+      "alternatives": [
+        "Thames"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-garonne",
+      "name": "Garonne",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-po",
+      "name": "Po",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-weichsel",
+      "name": "Weichsel",
+      "category": "river",
+      "alternatives": [
+        "Vistula"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-ebro",
+      "name": "Ebro",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-rhone",
+      "name": "Rh\u00f4ne",
+      "category": "river",
+      "alternatives": [
+        "Rhone"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-oeral",
+      "name": "Oeral",
+      "category": "river",
+      "alternatives": [
+        "Ural"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-taag",
+      "name": "Taag",
+      "category": "river",
+      "alternatives": [
+        "Tagus"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-elbe",
+      "name": "Elbe",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-r-donau",
+      "name": "Donau",
+      "category": "river",
+      "alternatives": [
+        "Danube"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "mountains": [
+    {
+      "id": "eu-m-pyreneen",
+      "name": "Pyrenee\u00ebn",
+      "category": "mountain",
+      "alternatives": [
+        "Pyreneen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-m-alpen",
+      "name": "Alpen",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-m-karpaten",
+      "name": "Karpaten",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-m-oeral",
+      "name": "Oeral",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-m-kaukasus",
+      "name": "Kaukasus",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-m-scandinavisch",
+      "name": "Scandinavisch Hoogland",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "islands_peninsulas": [
+    {
+      "id": "eu-i-corsica",
+      "name": "Corsica",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-sardinie",
+      "name": "Sardini\u00eb",
+      "category": "mountain",
+      "alternatives": [
+        "Sardinie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-sicilie",
+      "name": "Sicili\u00eb",
+      "category": "mountain",
+      "alternatives": [
+        "Sicilie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-kreta",
+      "name": "Kreta",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-cyprus",
+      "name": "Cyprus (Eiland)",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-britseeilanden",
+      "name": "Britse Eilanden",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-i-ijsland",
+      "name": "IJsland (Eiland)",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-p-scandinavie",
+      "name": "Scandinavi\u00eb",
+      "category": "mountain",
+      "alternatives": [
+        "Scandinavisch Schiereiland"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-p-balkan",
+      "name": "Balkan",
+      "category": "mountain",
+      "alternatives": [
+        "Balkanschiereiland"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-p-italie",
+      "name": "Italiaans Schiereiland",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "eu-p-iberisch",
+      "name": "Iberisch Schiereiland",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    }
+  ]
+}

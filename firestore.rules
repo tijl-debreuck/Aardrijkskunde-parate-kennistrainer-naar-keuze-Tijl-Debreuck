@@ -1,0 +1,45 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net
+    match /{document=**} { 
+      allow read, write: if false; 
+    }
+
+    // Hardened users document access
+    match /users/{userId} {
+      // Validation helper function
+      function isValidUser(data) {
+        return data.keys().hasAll(['email', 'createdAt', 'preferences', 'geoStats', 'geoProgress'])
+          && data.email is string
+          && data.createdAt is string
+          && data.preferences is map
+          && data.geoStats is map
+          && data.geoProgress is map;
+      }
+
+      function isValidUpdate(incomingData, existingData) {
+         return incomingData.diff(existingData).affectedKeys().hasAny(['preferences', 'geoStats', 'geoProgress']);
+      }
+
+      // Read is only allowed for the owner
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      // Creation allows to set the initial schema
+      allow create: if request.auth != null 
+                    && request.auth.uid == userId 
+                    && isValidUser(request.resource.data);
+      
+      // Updates only allowed for owner, strictly for preferences/stats/progress
+      allow update: if request.auth != null 
+                    && request.auth.uid == userId
+                    && isValidUpdate(request.resource.data, resource.data)
+                    && request.resource.data.email == resource.data.email
+                    && request.resource.data.createdAt == resource.data.createdAt;
+                    
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

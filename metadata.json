@@ -1,0 +1,8 @@
+{
+  "name": "Remix Aardrijkskunde parate kennis naar keuze",
+  "description": "Een modulaire, productieklare aardrijkskunde quiz webapp met interactieve kaarten, statistieken en dataset beheer. Nu kan je ook je leerstof zelf kiezen",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

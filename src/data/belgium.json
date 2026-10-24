@@ -1,0 +1,1560 @@
+{
+  "provinces": [
+    {
+      "id": "be-p-wvl",
+      "name": "West-Vlaanderen",
+      "capital": "Brugge",
+      "category": "province",
+      "coordinates": [
+        3.2247,
+        51.2093
+      ],
+      "polygon": [
+        [
+          2.54,
+          51.1
+        ],
+        [
+          2.59,
+          51.13
+        ],
+        [
+          2.68,
+          51.17
+        ],
+        [
+          2.8,
+          51.22
+        ],
+        [
+          2.95,
+          51.26
+        ],
+        [
+          3.1,
+          51.3
+        ],
+        [
+          3.22,
+          51.34
+        ],
+        [
+          3.36,
+          51.36
+        ],
+        [
+          3.37,
+          51.28
+        ],
+        [
+          3.48,
+          51.22
+        ],
+        [
+          3.42,
+          51.12
+        ],
+        [
+          3.36,
+          50.98
+        ],
+        [
+          3.29,
+          50.84
+        ],
+        [
+          3.18,
+          50.76
+        ],
+        [
+          3.02,
+          50.73
+        ],
+        [
+          2.86,
+          50.78
+        ],
+        [
+          2.64,
+          50.84
+        ],
+        [
+          2.54,
+          51.1
+        ]
+      ],
+      "alternatives": [
+        "West Vlaanderen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-ovl",
+      "name": "Oost-Vlaanderen",
+      "capital": "Gent",
+      "category": "province",
+      "coordinates": [
+        3.7174,
+        51.0543
+      ],
+      "polygon": [
+        [
+          3.36,
+          51.36
+        ],
+        [
+          3.55,
+          51.33
+        ],
+        [
+          3.75,
+          51.27
+        ],
+        [
+          3.9,
+          51.25
+        ],
+        [
+          4.15,
+          51.31
+        ],
+        [
+          4.24,
+          51.26
+        ],
+        [
+          4.28,
+          51.15
+        ],
+        [
+          4.18,
+          51.05
+        ],
+        [
+          4.08,
+          50.88
+        ],
+        [
+          3.92,
+          50.78
+        ],
+        [
+          3.68,
+          50.75
+        ],
+        [
+          3.54,
+          50.77
+        ],
+        [
+          3.36,
+          50.98
+        ],
+        [
+          3.42,
+          51.12
+        ],
+        [
+          3.48,
+          51.22
+        ],
+        [
+          3.37,
+          51.28
+        ],
+        [
+          3.36,
+          51.36
+        ]
+      ],
+      "alternatives": [
+        "Oost Vlaanderen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-ant",
+      "name": "Antwerpen",
+      "capital": "Antwerpen",
+      "category": "province",
+      "coordinates": [
+        4.4025,
+        51.2194
+      ],
+      "polygon": [
+        [
+          4.15,
+          51.31
+        ],
+        [
+          4.28,
+          51.38
+        ],
+        [
+          4.42,
+          51.48
+        ],
+        [
+          4.72,
+          51.5
+        ],
+        [
+          4.98,
+          51.42
+        ],
+        [
+          5.18,
+          51.31
+        ],
+        [
+          5.12,
+          51.15
+        ],
+        [
+          5.08,
+          51.05
+        ],
+        [
+          4.72,
+          50.98
+        ],
+        [
+          4.38,
+          51.02
+        ],
+        [
+          4.28,
+          51.15
+        ],
+        [
+          4.24,
+          51.26
+        ],
+        [
+          4.15,
+          51.31
+        ]
+      ],
+      "alternatives": [
+        "Anvers"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "be-p-lim",
+      "name": "Limburg",
+      "capital": "Hasselt",
+      "category": "province",
+      "coordinates": [
+        5.3378,
+        50.9307
+      ],
+      "polygon": [
+        [
+          5.18,
+          51.31
+        ],
+        [
+          5.38,
+          51.28
+        ],
+        [
+          5.56,
+          51.25
+        ],
+        [
+          5.78,
+          51.2
+        ],
+        [
+          5.7,
+          50.98
+        ],
+        [
+          5.68,
+          50.78
+        ],
+        [
+          5.48,
+          50.73
+        ],
+        [
+          5.14,
+          50.74
+        ],
+        [
+          5.08,
+          51.05
+        ],
+        [
+          5.12,
+          51.15
+        ],
+        [
+          5.18,
+          51.31
+        ]
+      ],
+      "alternatives": [
+        "Belgisch Limburg"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-vbr",
+      "name": "Vlaams-Brabant",
+      "capital": "Leuven",
+      "category": "province",
+      "coordinates": [
+        4.7009,
+        50.8798
+      ],
+      "polygon": [
+        [
+          4.08,
+          50.88
+        ],
+        [
+          4.28,
+          51.15
+        ],
+        [
+          4.38,
+          51.02
+        ],
+        [
+          4.72,
+          50.98
+        ],
+        [
+          5.08,
+          51.05
+        ],
+        [
+          5.14,
+          50.74
+        ],
+        [
+          4.94,
+          50.76
+        ],
+        [
+          4.72,
+          50.74
+        ],
+        [
+          4.58,
+          50.72
+        ],
+        [
+          4.32,
+          50.73
+        ],
+        [
+          4.08,
+          50.72
+        ],
+        [
+          3.92,
+          50.78
+        ],
+        [
+          4.08,
+          50.88
+        ]
+      ],
+      "alternatives": [
+        "Vlaams Brabant"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-hen",
+      "name": "Henegouwen",
+      "capital": "Bergen",
+      "category": "province",
+      "coordinates": [
+        3.9523,
+        50.4542
+      ],
+      "polygon": [
+        [
+          3.18,
+          50.76
+        ],
+        [
+          3.36,
+          50.98
+        ],
+        [
+          3.54,
+          50.77
+        ],
+        [
+          3.68,
+          50.75
+        ],
+        [
+          3.92,
+          50.78
+        ],
+        [
+          4.08,
+          50.72
+        ],
+        [
+          4.32,
+          50.73
+        ],
+        [
+          4.32,
+          50.58
+        ],
+        [
+          4.52,
+          50.45
+        ],
+        [
+          4.42,
+          50.15
+        ],
+        [
+          4.24,
+          49.98
+        ],
+        [
+          4.12,
+          50.12
+        ],
+        [
+          3.82,
+          50.32
+        ],
+        [
+          3.48,
+          50.48
+        ],
+        [
+          3.18,
+          50.76
+        ]
+      ],
+      "alternatives": [
+        "Hainaut",
+        "Bergen Henegouwen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-wbr",
+      "name": "Waals-Brabant",
+      "capital": "Waver",
+      "category": "province",
+      "coordinates": [
+        4.6074,
+        50.7171
+      ],
+      "polygon": [
+        [
+          4.32,
+          50.73
+        ],
+        [
+          4.58,
+          50.72
+        ],
+        [
+          4.72,
+          50.74
+        ],
+        [
+          4.94,
+          50.76
+        ],
+        [
+          4.96,
+          50.62
+        ],
+        [
+          4.78,
+          50.56
+        ],
+        [
+          4.52,
+          50.55
+        ],
+        [
+          4.32,
+          50.58
+        ],
+        [
+          4.32,
+          50.73
+        ]
+      ],
+      "alternatives": [
+        "Waals Brabant",
+        "Brabant Wallon"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-nam",
+      "name": "Namen",
+      "capital": "Namen",
+      "category": "province",
+      "coordinates": [
+        4.8675,
+        50.4674
+      ],
+      "polygon": [
+        [
+          4.52,
+          50.55
+        ],
+        [
+          4.78,
+          50.56
+        ],
+        [
+          4.96,
+          50.62
+        ],
+        [
+          5.18,
+          50.52
+        ],
+        [
+          5.44,
+          50.36
+        ],
+        [
+          5.22,
+          50.12
+        ],
+        [
+          4.98,
+          49.98
+        ],
+        [
+          4.84,
+          50.02
+        ],
+        [
+          4.72,
+          49.95
+        ],
+        [
+          4.48,
+          50.08
+        ],
+        [
+          4.42,
+          50.15
+        ],
+        [
+          4.52,
+          50.45
+        ],
+        [
+          4.52,
+          50.55
+        ]
+      ],
+      "alternatives": [
+        "Namur"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-lui",
+      "name": "Luik",
+      "capital": "Luik",
+      "category": "province",
+      "coordinates": [
+        5.5797,
+        50.6326
+      ],
+      "polygon": [
+        [
+          5.14,
+          50.74
+        ],
+        [
+          5.48,
+          50.73
+        ],
+        [
+          5.68,
+          50.78
+        ],
+        [
+          6.02,
+          50.76
+        ],
+        [
+          6.42,
+          50.52
+        ],
+        [
+          6.28,
+          50.32
+        ],
+        [
+          6.04,
+          50.18
+        ],
+        [
+          5.78,
+          50.28
+        ],
+        [
+          5.44,
+          50.36
+        ],
+        [
+          5.18,
+          50.52
+        ],
+        [
+          4.96,
+          50.62
+        ],
+        [
+          4.94,
+          50.76
+        ],
+        [
+          5.14,
+          50.74
+        ]
+      ],
+      "alternatives": [
+        "Li\u00e8ge",
+        "Liege"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-p-lux",
+      "name": "Luxemburg",
+      "capital": "Aarlen",
+      "category": "province",
+      "coordinates": [
+        5.7075,
+        49.9542
+      ],
+      "polygon": [
+        [
+          5.44,
+          50.36
+        ],
+        [
+          5.78,
+          50.28
+        ],
+        [
+          6.04,
+          50.18
+        ],
+        [
+          6.14,
+          49.98
+        ],
+        [
+          5.84,
+          49.52
+        ],
+        [
+          5.48,
+          49.52
+        ],
+        [
+          5.28,
+          49.72
+        ],
+        [
+          4.98,
+          49.98
+        ],
+        [
+          5.22,
+          50.12
+        ],
+        [
+          5.44,
+          50.36
+        ]
+      ],
+      "alternatives": [
+        "Luxembourg",
+        "Belgisch Luxemburg"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "brussels": {
+    "id": "be-p-bru",
+    "name": "Brussels Hoofdstedelijk Gewest",
+    "capital": "Brussel",
+    "category": "province",
+    "coordinates": [
+      4.3517,
+      50.8503
+    ],
+    "polygon": [
+      [
+        4.31,
+        50.88
+      ],
+      [
+        4.42,
+        50.89
+      ],
+      [
+        4.44,
+        50.82
+      ],
+      [
+        4.32,
+        50.8
+      ],
+      [
+        4.31,
+        50.88
+      ]
+    ],
+    "difficulty": "gemiddeld"
+  },
+  "neighbors": [
+    {
+      "id": "nld-main",
+      "name": "Nederland",
+      "polygon": [
+        [
+          2.5,
+          51.5
+        ],
+        [
+          3.3,
+          51.4
+        ],
+        [
+          3.36,
+          51.36
+        ],
+        [
+          3.55,
+          51.33
+        ],
+        [
+          3.75,
+          51.27
+        ],
+        [
+          3.9,
+          51.25
+        ],
+        [
+          4.15,
+          51.31
+        ],
+        [
+          4.28,
+          51.38
+        ],
+        [
+          4.42,
+          51.48
+        ],
+        [
+          4.72,
+          51.5
+        ],
+        [
+          4.98,
+          51.42
+        ],
+        [
+          5.18,
+          51.31
+        ],
+        [
+          5.38,
+          51.28
+        ],
+        [
+          5.56,
+          51.25
+        ],
+        [
+          5.78,
+          51.2
+        ],
+        [
+          6.02,
+          50.76
+        ],
+        [
+          6.2,
+          50.9
+        ],
+        [
+          6,
+          51.7
+        ],
+        [
+          4,
+          51.8
+        ],
+        [
+          2.5,
+          51.8
+        ],
+        [
+          2.5,
+          51.5
+        ]
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "fra-main",
+      "name": "Frankrijk",
+      "polygon": [
+        [
+          2,
+          51.2
+        ],
+        [
+          2.54,
+          51.1
+        ],
+        [
+          2.64,
+          50.84
+        ],
+        [
+          2.86,
+          50.78
+        ],
+        [
+          3.02,
+          50.73
+        ],
+        [
+          3.18,
+          50.76
+        ],
+        [
+          3.48,
+          50.48
+        ],
+        [
+          3.82,
+          50.32
+        ],
+        [
+          4.12,
+          50.12
+        ],
+        [
+          4.24,
+          49.98
+        ],
+        [
+          4.48,
+          50.08
+        ],
+        [
+          4.72,
+          49.95
+        ],
+        [
+          4.84,
+          50.02
+        ],
+        [
+          4.98,
+          49.98
+        ],
+        [
+          5.28,
+          49.72
+        ],
+        [
+          5.48,
+          49.52
+        ],
+        [
+          5.4,
+          49.3
+        ],
+        [
+          2,
+          49.3
+        ],
+        [
+          2,
+          51.2
+        ]
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "deu-main",
+      "name": "Duitsland",
+      "polygon": [
+        [
+          6.02,
+          50.76
+        ],
+        [
+          6.42,
+          50.52
+        ],
+        [
+          6.28,
+          50.32
+        ],
+        [
+          6.04,
+          50.18
+        ],
+        [
+          6.5,
+          50
+        ],
+        [
+          6.5,
+          51
+        ],
+        [
+          6.02,
+          50.76
+        ]
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "lux-main",
+      "name": "Luxemburg",
+      "polygon": [
+        [
+          6.04,
+          50.18
+        ],
+        [
+          6.14,
+          49.98
+        ],
+        [
+          5.84,
+          49.52
+        ],
+        [
+          6.3,
+          49.5
+        ],
+        [
+          6.5,
+          50
+        ],
+        [
+          6.04,
+          50.18
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "rivers": [
+    {
+      "id": "be-r-ijz",
+      "name": "IJzer",
+      "category": "river",
+      "coordinatesList": [
+        [
+          2.55,
+          50.85
+        ],
+        [
+          2.68,
+          50.96
+        ],
+        [
+          2.76,
+          51.03
+        ],
+        [
+          2.75,
+          51.13
+        ]
+      ],
+      "alternatives": [
+        "Yser"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-r-sch",
+      "name": "Schelde",
+      "category": "river",
+      "coordinatesList": [
+        [
+          3.4,
+          50.48
+        ],
+        [
+          3.55,
+          50.7
+        ],
+        [
+          3.71,
+          51.05
+        ],
+        [
+          4,
+          51.1
+        ],
+        [
+          4.38,
+          51.22
+        ],
+        [
+          4.28,
+          51.36
+        ]
+      ],
+      "alternatives": [
+        "Escaut"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-r-maa",
+      "name": "Maas",
+      "category": "river",
+      "coordinatesList": [
+        [
+          4.8,
+          50
+        ],
+        [
+          4.88,
+          50.3
+        ],
+        [
+          4.86,
+          50.46
+        ],
+        [
+          5.2,
+          50.53
+        ],
+        [
+          5.58,
+          50.63
+        ],
+        [
+          5.68,
+          50.78
+        ],
+        [
+          5.78,
+          51.2
+        ]
+      ],
+      "alternatives": [
+        "Meuse"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-r-lei",
+      "name": "Leie",
+      "category": "river",
+      "coordinatesList": [
+        [
+          3,
+          50.7
+        ],
+        [
+          3.2,
+          50.82
+        ],
+        [
+          3.5,
+          50.9
+        ],
+        [
+          3.71,
+          51.05
+        ]
+      ],
+      "alternatives": [
+        "Lys"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-r-sam",
+      "name": "Samber",
+      "category": "river",
+      "coordinatesList": [
+        [
+          4.12,
+          50.3
+        ],
+        [
+          4.4,
+          50.4
+        ],
+        [
+          4.86,
+          50.46
+        ]
+      ],
+      "alternatives": [
+        "Sambre"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "highways": [
+    {
+      "id": "be-h-e40",
+      "name": "E40",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          2.56,
+          51.08
+        ],
+        [
+          3.22,
+          51.21
+        ],
+        [
+          3.71,
+          51.05
+        ],
+        [
+          4.35,
+          50.85
+        ],
+        [
+          4.7,
+          50.88
+        ],
+        [
+          5.58,
+          50.63
+        ],
+        [
+          6.02,
+          50.76
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e403",
+      "name": "E403",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          3.22,
+          51.21
+        ],
+        [
+          3.1,
+          50.9
+        ],
+        [
+          3.28,
+          50.83
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e17",
+      "name": "E17",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          3.18,
+          50.76
+        ],
+        [
+          3.28,
+          50.83
+        ],
+        [
+          3.71,
+          51.05
+        ],
+        [
+          4.15,
+          51.16
+        ],
+        [
+          4.4,
+          51.22
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e19",
+      "name": "E19",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          4.72,
+          51.5
+        ],
+        [
+          4.4,
+          51.22
+        ],
+        [
+          4.4,
+          51
+        ],
+        [
+          4.35,
+          50.85
+        ],
+        [
+          4.1,
+          50.5
+        ],
+        [
+          3.95,
+          50.45
+        ],
+        [
+          3.7,
+          50.35
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e411",
+      "name": "E411",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          4.35,
+          50.85
+        ],
+        [
+          4.6,
+          50.72
+        ],
+        [
+          4.86,
+          50.46
+        ],
+        [
+          5.12,
+          50.02
+        ],
+        [
+          5.7,
+          49.65
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e42",
+      "name": "E42",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          3.4,
+          50.48
+        ],
+        [
+          3.95,
+          50.45
+        ],
+        [
+          4.4,
+          50.4
+        ],
+        [
+          4.86,
+          50.46
+        ],
+        [
+          5.58,
+          50.63
+        ],
+        [
+          6.04,
+          50.18
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e313",
+      "name": "E313",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          4.4,
+          51.22
+        ],
+        [
+          4.9,
+          51.12
+        ],
+        [
+          5.33,
+          50.93
+        ],
+        [
+          5.58,
+          50.63
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-h-e314",
+      "name": "E314",
+      "category": "highway",
+      "coordinatesList": [
+        [
+          4.7,
+          50.88
+        ],
+        [
+          4.95,
+          50.96
+        ],
+        [
+          5.33,
+          50.93
+        ],
+        [
+          5.78,
+          50.95
+        ]
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "ports": [
+    {
+      "id": "be-po-ant",
+      "name": "Port of Antwerpen",
+      "category": "port",
+      "coordinates": [
+        4.4025,
+        51.25
+      ],
+      "alternatives": [
+        "Antwerpen haven",
+        "Port of Antwerp",
+        "Haven van Antwerpen",
+        "Antwerpen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-po-zee",
+      "name": "Port of Zeebrugge",
+      "category": "port",
+      "coordinates": [
+        3.2,
+        51.33
+      ],
+      "alternatives": [
+        "Zeebrugge haven",
+        "Haven van Zeebrugge",
+        "Zeebrugge"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "be-po-gen",
+      "name": "Port of Gent",
+      "category": "port",
+      "coordinates": [
+        3.73,
+        51.12
+      ],
+      "alternatives": [
+        "Gent haven",
+        "Haven van Gent",
+        "Gent",
+        "North Sea Port"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "regions": [
+    {
+      "id": "be-reg-vla",
+      "name": "Vlaams Gewest",
+      "category": "region",
+      "coordinates": [
+        4.35,
+        51.0
+      ],
+      "alternatives": [
+        "Vlaanderen",
+        "Flanders",
+        "Vlaamse Gewest"
+      ]
+    },
+    {
+      "id": "be-reg-waa",
+      "name": "Waals Gewest",
+      "category": "region",
+      "coordinates": [
+        4.85,
+        50.3
+      ],
+      "alternatives": [
+        "Wallonië",
+        "Wallonie",
+        "Wallonia",
+        "Waals Gewest"
+      ]
+    },
+    {
+      "id": "be-reg-bru",
+      "name": "Brussels Hoofdstedelijk Gewest",
+      "category": "region",
+      "coordinates": [
+        4.3517,
+        50.8503
+      ],
+      "polygon": [
+        [
+          4.31,
+          50.88
+        ],
+        [
+          4.42,
+          50.89
+        ],
+        [
+          4.44,
+          50.82
+        ],
+        [
+          4.32,
+          50.8
+        ],
+        [
+          4.31,
+          50.88
+        ]
+      ],
+      "alternatives": [
+        "Brussel",
+        "Brussels",
+        "Région de Bruxelles-Capitale"
+      ]
+    }
+  ],
+  "rivers": [
+    { "id": "be-r-sch", "name": "Schelde", "category": "river", "coordinates": [3.9, 51.0], "difficulty": "makkelijk", "extraInfo": "Stroomt via Gent en Antwerpen naar de Noordzee" },
+    { "id": "be-r-maa", "name": "Maas", "category": "river", "coordinates": [5.1, 50.45], "difficulty": "makkelijk", "extraInfo": "Stroomt via Dinant, Namen en Luik" },
+    { "id": "be-r-lei", "name": "Leie", "category": "river", "coordinates": [3.45, 50.85], "difficulty": "gemiddeld", "extraInfo": "Mondt te Gent uit in de Schelde" },
+    { "id": "be-r-ijz", "name": "IJzer", "category": "river", "coordinates": [2.75, 51.0], "difficulty": "makkelijk", "extraInfo": "Stroomt via Diksmuide naar Nieuwpoort" },
+    { "id": "be-r-dender", "name": "Dender", "category": "river", "coordinates": [4.02, 50.83], "difficulty": "gemiddeld", "extraInfo": "Stroomt via Geraardsbergen en Aalst naar Dendermonde" },
+    { "id": "be-r-dijle", "name": "Dijle", "category": "river", "coordinates": [4.65, 50.85], "difficulty": "gemiddeld", "extraInfo": "Stroomt via Waver, Leuven en Mechelen naar de Rupel" },
+    { "id": "be-r-samber", "name": "Samber", "category": "river", "coordinates": [4.44, 50.41], "difficulty": "gemiddeld", "extraInfo": "Stroomt via Charleroi naar Namen waar ze in de Maas vloeit" },
+    { "id": "be-r-demer", "name": "Demer", "category": "river", "coordinates": [5.05, 50.98], "difficulty": "gemiddeld", "extraInfo": "Stroomt via Hasselt, Diest en Aarschot naar Werchter" },
+    { "id": "be-r-rupel", "name": "Rupel", "category": "river", "coordinates": [4.37, 51.08], "difficulty": "gemiddeld", "extraInfo": "Korte getijdenrivier van Rumst naar Rupelmonde" },
+    { "id": "be-r-nete", "name": "Nete", "category": "river", "coordinates": [4.65, 51.13], "difficulty": "gemiddeld", "extraInfo": "Grote en Kleine Nete vloeien samen te Lier" },
+    { "id": "be-r-ourthe", "name": "Ourthe", "category": "river", "coordinates": [5.55, 50.35], "difficulty": "gemiddeld", "extraInfo": "Ardense zijrivier van de Maas die uitmondt te Luik" },
+    { "id": "be-r-ambleve", "name": "Amblève", "category": "river", "coordinates": [5.87, 50.45], "difficulty": "moeilijk", "extraInfo": "Bekend van de watervallen van Coo, mondt uit in de Ourthe" },
+    { "id": "be-r-semois", "name": "Semois", "category": "river", "coordinates": [5.25, 49.75], "difficulty": "gemiddeld", "extraInfo": "Kronkelt door het zuiden van België via Bouillon" },
+    { "id": "be-r-lesse", "name": "Lesse", "category": "river", "coordinates": [5.15, 50.15], "difficulty": "moeilijk", "extraInfo": "Stroomt door de grotten van Han en mondt uit te Anseremme" },
+    { "id": "be-r-zenne", "name": "Zenne", "category": "river", "coordinates": [4.33, 50.83], "difficulty": "gemiddeld", "extraInfo": "Stroomt onder Brussel door en vloeit nabij Mechelen in de Dijle" },
+    { "id": "be-r-gete", "name": "Gete", "category": "river", "coordinates": [5.10, 50.88], "difficulty": "gemiddeld", "extraInfo": "Zijrivier van de Demer via Tienen en Zoutleeuw" },
+    { "id": "be-r-vesder", "name": "Vesder", "category": "river", "coordinates": [5.80, 50.59], "alternatives": ["Vesdre"], "difficulty": "gemiddeld", "extraInfo": "Zijrivier van de Ourthe via Eupen en Verviers" }
+  ],
+  "canals": [
+    { "id": "be-c-albert", "name": "Albertkanaal", "category": "canal", "coordinates": [5.0, 51.1], "difficulty": "makkelijk", "extraInfo": "Verbindt Antwerpen met Luik en de Maas" },
+    { "id": "be-c-zeekanaal", "name": "Zeekanaal Brussel-Schelde", "category": "canal", "coordinates": [4.38, 50.98], "alternatives": ["Willebroekkanaal"], "difficulty": "gemiddeld", "extraInfo": "Historisch zeekanaal van Brussel naar de Schelde" },
+    { "id": "be-c-gent-terneuzen", "name": "Kanaal Gent-Terneuzen", "category": "canal", "coordinates": [3.78, 51.20], "difficulty": "gemiddeld", "extraInfo": "Groot zeekanaal tussen Gent en de Westerschelde" },
+    { "id": "be-c-boudewijn", "name": "Boudewijnkanaal", "category": "canal", "coordinates": [3.21, 51.27], "difficulty": "moeilijk", "extraInfo": "Verbindt Brugge met de haven van Zeebrugge" }
+  ],
+  "highways": [
+    { "id": "be-h-e40", "name": "E40", "category": "highway", "coordinates": [3.70, 51.02], "difficulty": "makkelijk" },
+    { "id": "be-h-e17", "name": "E17", "category": "highway", "coordinates": [3.72, 51.03], "difficulty": "makkelijk" },
+    { "id": "be-h-e19", "name": "E19", "category": "highway", "coordinates": [4.45, 51.03], "difficulty": "makkelijk" },
+    { "id": "be-h-e313", "name": "E313", "category": "highway", "coordinates": [4.75, 51.12], "difficulty": "gemiddeld" },
+    { "id": "be-h-e314", "name": "E314", "category": "highway", "coordinates": [5.05, 50.98], "difficulty": "gemiddeld" },
+    { "id": "be-h-e411", "name": "E411", "category": "highway", "coordinates": [4.86, 50.46], "difficulty": "gemiddeld" },
+    { "id": "be-h-e42", "name": "E42", "category": "highway", "coordinates": [4.44, 50.41], "difficulty": "gemiddeld" },
+    { "id": "be-h-e403", "name": "E403", "category": "highway", "coordinates": [3.10, 50.98], "difficulty": "gemiddeld" }
+  ],
+  "communities": [
+    { "id": "be-com-vla", "name": "Vlaamse Gemeenschap", "category": "province", "coordinates": [4.35, 51.05], "alternatives": ["Flemish Community"], "difficulty": "makkelijk" },
+    { "id": "be-com-fra", "name": "Franse Gemeenschap", "category": "province", "coordinates": [4.85, 50.35], "alternatives": ["Fédération Wallonie-Bruxelles", "French Community"], "difficulty": "makkelijk" },
+    { "id": "be-com-dui", "name": "Duitstalige Gemeenschap", "category": "province", "coordinates": [6.05, 50.40], "alternatives": ["Deutschsprachige Gemeinschaft", "Oostkantons"], "difficulty": "gemiddeld" }
+  ],
+  "peaks": [
+    { "id": "be-peak-botrange", "name": "Signaal van Botrange", "category": "peak", "coordinates": [6.0933, 50.5019], "alternatives": ["Botrange"], "difficulty": "makkelijk", "extraInfo": "Hoogste punt van België (694 m)" }
+  ],
+  "referenceLines": [
+    { "id": "be-line-taalgrens", "name": "Taalgrens", "category": "line", "coordinates": [4.5, 50.74], "difficulty": "gemiddeld", "extraInfo": "Grens tussen Nederlands en Frans taalgebied" }
+  ],
+  "neighbors": [
+    {
+      "id": "be-nb-ned",
+      "name": "Nederland",
+      "coordinates": [4.8, 51.48],
+      "polygon": [
+        [3.35, 51.36], [3.6, 51.45], [4.1, 51.48], [4.4, 51.55], [5.1, 51.6], [5.9, 51.3],
+        [6.1, 50.85], [5.75, 50.85], [5.7, 51.1], [5.4, 51.25], [4.9, 51.4], [4.3, 51.4], [3.35, 51.36]
+      ]
+    },
+    {
+      "id": "be-nb-fra",
+      "name": "Frankrijk",
+      "coordinates": [3.2, 50.25],
+      "polygon": [
+        [2.54, 51.08], [2.1, 51.0], [1.8, 50.9], [1.9, 50.3], [2.8, 49.8], [4.0, 49.5], [5.0, 49.3], [5.7, 49.5],
+        [5.8, 49.6], [5.5, 49.7], [4.8, 50.0], [4.1, 50.3], [3.5, 50.4], [3.1, 50.7], [2.54, 51.08]
+      ]
+    },
+    {
+      "id": "be-nb-dui",
+      "name": "Duitsland",
+      "coordinates": [6.35, 50.5],
+      "polygon": [
+        [6.05, 50.75], [6.6, 50.8], [6.6, 50.1], [6.15, 50.15], [6.35, 50.4], [6.05, 50.75]
+      ]
+    },
+    {
+      "id": "be-nb-lux",
+      "name": "Luxemburg",
+      "coordinates": [6.1, 49.8],
+      "polygon": [
+        [5.75, 49.65], [6.2, 49.5], [6.3, 49.8], [6.15, 50.15], [5.9, 50.15], [5.75, 49.65]
+      ]
+    },
+    {
+      "id": "be-nb-gbr",
+      "name": "Verenigd Koninkrijk",
+      "coordinates": [1.4, 51.3],
+      "polygon": [
+        [1.2, 51.1], [1.45, 51.2], [1.45, 51.4], [1.2, 51.4], [1.2, 51.1]
+      ]
+    }
+  ]
+}

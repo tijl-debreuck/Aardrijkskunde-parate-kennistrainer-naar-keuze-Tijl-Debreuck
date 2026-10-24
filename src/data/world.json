@@ -1,0 +1,1614 @@
+{
+  "continents": [
+    {
+      "id": "wd-co-eur",
+      "name": "Eurazi\u00eb",
+      "category": "continent",
+      "polygon": [
+        [
+          -10,
+          36
+        ],
+        [
+          170,
+          36
+        ],
+        [
+          170,
+          75
+        ],
+        [
+          -10,
+          75
+        ]
+      ],
+      "alternatives": [
+        "Eurasia",
+        "Eurazie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-co-afr",
+      "name": "Afrika",
+      "category": "continent",
+      "polygon": [
+        [
+          -17,
+          35
+        ],
+        [
+          51,
+          35
+        ],
+        [
+          51,
+          -34
+        ],
+        [
+          -17,
+          -34
+        ]
+      ],
+      "alternatives": [
+        "Africa"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-co-nam",
+      "name": "Noord-Amerika",
+      "category": "continent",
+      "polygon": [
+        [
+          -168,
+          83
+        ],
+        [
+          -52,
+          83
+        ],
+        [
+          -52,
+          12
+        ],
+        [
+          -168,
+          12
+        ]
+      ],
+      "alternatives": [
+        "Noord-Amerika",
+        "North America",
+        "Noord Amerika"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-co-zam",
+      "name": "Zuid-Amerika",
+      "category": "continent",
+      "polygon": [
+        [
+          -81,
+          12
+        ],
+        [
+          -34,
+          12
+        ],
+        [
+          -34,
+          -56
+        ],
+        [
+          -81,
+          -56
+        ]
+      ],
+      "alternatives": [
+        "South America",
+        "Zuid Amerika"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-co-ant",
+      "name": "Antarctica",
+      "category": "continent",
+      "polygon": [
+        [
+          -180,
+          -60
+        ],
+        [
+          180,
+          -60
+        ],
+        [
+          180,
+          -90
+        ],
+        [
+          -180,
+          -90
+        ]
+      ],
+      "alternatives": [
+        "Zuidpool"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-co-aus",
+      "name": "Australi\u00eb",
+      "category": "continent",
+      "polygon": [
+        [
+          113,
+          -10
+        ],
+        [
+          153,
+          -10
+        ],
+        [
+          153,
+          -40
+        ],
+        [
+          113,
+          -40
+        ]
+      ],
+      "alternatives": [
+        "Australia",
+        "Oceani\u00eb"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "werelddelen": [
+    {
+      "id": "wd-wd-eur",
+      "name": "Europa",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-wd-azi",
+      "name": "Azi\u00eb",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-wd-afr",
+      "name": "Afrika",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-wd-ame",
+      "name": "Amerika",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-wd-oce",
+      "name": "Oceani\u00eb",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-wd-ant",
+      "name": "Antarctica",
+      "category": "continent",
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "oceans": [
+    {
+      "id": "wd-oc-gro",
+      "name": "Grote Oceaan",
+      "category": "ocean",
+      "alternatives": [
+        "Stille Oceaan",
+        "Pacific",
+        "Pacific Ocean"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-oc-atl",
+      "name": "Atlantische Oceaan",
+      "category": "ocean",
+      "alternatives": [
+        "Atlantic",
+        "Atlantic Ocean"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-oc-ind",
+      "name": "Indische Oceaan",
+      "category": "ocean",
+      "alternatives": [
+        "Indian Ocean",
+        "Indian"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-oc-nij",
+      "name": "Noordelijke IJszee",
+      "category": "ocean",
+      "alternatives": [
+        "Arctic Ocean",
+        "Arctic",
+        "Arctische Oceaan"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "referenceLines": [
+    {
+      "id": "wd-rl-nul",
+      "name": "Nulmeridiaan",
+      "category": "line",
+      "alternatives": [
+        "Prime Meridian"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-rl-eve",
+      "name": "Evenaar",
+      "category": "line",
+      "alternatives": [
+        "Equator"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-rl-kre",
+      "name": "Kreeftskeerkring",
+      "category": "line",
+      "alternatives": [
+        "Tropic of Cancer"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-rl-ste",
+      "name": "Steenbokskeerkring",
+      "category": "line",
+      "alternatives": [
+        "Tropic of Capricorn"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-rl-npo",
+      "name": "Noordpoolcirkel",
+      "category": "line",
+      "alternatives": [
+        "Arctic Circle"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-rl-zpo",
+      "name": "Zuidpoolcirkel",
+      "category": "line",
+      "alternatives": [
+        "Antarctic Circle"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "rivers": [
+    {
+      "id": "wd-r-nijl",
+      "name": "Nijl",
+      "category": "river",
+      "alternatives": [
+        "Nile"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-amazone",
+      "name": "Amazone",
+      "category": "river",
+      "alternatives": [
+        "Amazon"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-mississippi",
+      "name": "Mississippi",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-parana",
+      "name": "Paran\u00e1",
+      "category": "river",
+      "alternatives": [
+        "Parana"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-niger",
+      "name": "Niger",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-kongo",
+      "name": "Kongo",
+      "category": "river",
+      "alternatives": [
+        "Congo"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-ob",
+      "name": "Ob",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-jenisej",
+      "name": "Jenisej",
+      "category": "river",
+      "alternatives": [
+        "Yenisey"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-lena",
+      "name": "Lena",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-huanghe",
+      "name": "Huanghe",
+      "category": "river",
+      "alternatives": [
+        "Gele Rivier",
+        "Yellow River"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-jangtsekiang",
+      "name": "Jangtsekiang",
+      "category": "river",
+      "alternatives": [
+        "Blauwe Rivier",
+        "Yangtze",
+        "Yangtse"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-ganges",
+      "name": "Ganges",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-r-darling",
+      "name": "Darling",
+      "category": "river",
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "mountains": [
+    {
+      "id": "wd-m-himalaya",
+      "name": "Himalaya",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-andes",
+      "name": "Andes",
+      "category": "mountain",
+      "alternatives": [
+        "Andesgebergte"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-rocky",
+      "name": "Rocky Mountains",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-atlas",
+      "name": "Atlas",
+      "category": "mountain",
+      "alternatives": [
+        "Atlasgebergte"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-madre",
+      "name": "Sierra Madre",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-kunlun",
+      "name": "Kunlun Shan",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-taurus",
+      "name": "Taurus",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-oeral",
+      "name": "Oeral",
+      "category": "mountain",
+      "alternatives": [
+        "Ural"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-coast",
+      "name": "Coast Range",
+      "category": "mountain",
+      "alternatives": [
+        "Coast Mountains"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-tibet",
+      "name": "Hoogland van Tibet",
+      "category": "mountain",
+      "alternatives": [
+        "Tibetaans Plateau"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-iran",
+      "name": "Hoogland van Iran",
+      "category": "mountain",
+      "alternatives": [
+        "Iraans Plateau"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-ethiopisch",
+      "name": "Ethiopisch Hoogland",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-m-oostafrikaans",
+      "name": "Oost-Afrikaans Hoogland",
+      "category": "mountain",
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "countries": [
+    {
+      "id": "wd-l-can",
+      "name": "Canada",
+      "category": "country",
+      "coordinates": [
+        -106,
+        56
+      ],
+      "polygon": [
+        [
+          -141,
+          75
+        ],
+        [
+          -52,
+          47
+        ],
+        [
+          -52,
+          83
+        ],
+        [
+          -141,
+          83
+        ]
+      ],
+      "capital": "Ottawa",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-usa",
+      "name": "Verenigde Staten",
+      "category": "country",
+      "coordinates": [
+        -95.7,
+        37
+      ],
+      "polygon": [
+        [
+          -125,
+          49
+        ],
+        [
+          -67,
+          49
+        ],
+        [
+          -67,
+          25
+        ],
+        [
+          -125,
+          25
+        ]
+      ],
+      "capital": "Washington DC",
+      "alternatives": [
+        "VSA",
+        "USA",
+        "V.S.",
+        "Verenigde Staten van Amerika",
+        "United States"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "wd-l-mex",
+      "name": "Mexico",
+      "category": "country",
+      "coordinates": [
+        -102,
+        23
+      ],
+      "polygon": [
+        [
+          -117,
+          32
+        ],
+        [
+          -86,
+          21
+        ],
+        [
+          -92,
+          15
+        ],
+        [
+          -117,
+          32
+        ]
+      ],
+      "capital": "Mexico Stad",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-cub",
+      "name": "Cuba",
+      "category": "country",
+      "coordinates": [
+        -77.7,
+        21.5
+      ],
+      "capital": "Havana",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-bra",
+      "name": "Brazili\u00eb",
+      "category": "country",
+      "coordinates": [
+        -51.9,
+        -14.2
+      ],
+      "capital": "Brasilia",
+      "alternatives": [
+        "Brazil",
+        "Braziel",
+        "Brazilie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-ven",
+      "name": "Venezuela",
+      "category": "country",
+      "coordinates": [
+        -66.5,
+        6.4
+      ],
+      "capital": "Caracas",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-col",
+      "name": "Colombia",
+      "category": "country",
+      "coordinates": [
+        -72.9,
+        4.5
+      ],
+      "capital": "Bogota",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-per",
+      "name": "Peru",
+      "category": "country",
+      "coordinates": [
+        -75,
+        -9.1
+      ],
+      "capital": "Lima",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-chi",
+      "name": "Chili",
+      "category": "country",
+      "coordinates": [
+        -71.5,
+        -35.6
+      ],
+      "capital": "Santiago",
+      "alternatives": [
+        "Chile"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-arg",
+      "name": "Argentini\u00eb",
+      "category": "country",
+      "coordinates": [
+        -63.6,
+        -38.4
+      ],
+      "capital": "Buenos Aires",
+      "alternatives": [
+        "Argentina",
+        "Argentinie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-egy",
+      "name": "Egypte",
+      "category": "country",
+      "coordinates": [
+        30.8,
+        26.8
+      ],
+      "capital": "Cairo",
+      "alternatives": [
+        "Egypt",
+        "Ca\u00efro"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-alg",
+      "name": "Algerije",
+      "category": "country",
+      "coordinates": [
+        1.6,
+        28
+      ],
+      "capital": "Algiers",
+      "alternatives": [
+        "Algeria"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-lby",
+      "name": "Libi\u00eb",
+      "category": "country",
+      "coordinates": [
+        17.2,
+        26.3
+      ],
+      "capital": "Tripoli",
+      "alternatives": [
+        "Libya",
+        "Libie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-mar",
+      "name": "Marokko",
+      "category": "country",
+      "coordinates": [
+        -7,
+        31.7
+      ],
+      "capital": "Rabat",
+      "alternatives": [
+        "Morocco"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-tun",
+      "name": "Tunesi\u00eb",
+      "category": "country",
+      "coordinates": [
+        9.5,
+        33.8
+      ],
+      "capital": "Tunis",
+      "alternatives": [
+        "Tunisia",
+        "Tunesie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-som",
+      "name": "Somali\u00eb",
+      "category": "country",
+      "coordinates": [
+        46.1,
+        5.1
+      ],
+      "capital": "Mogadishu",
+      "alternatives": [
+        "Somalia",
+        "Somalie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-eth",
+      "name": "Ethiopi\u00eb",
+      "category": "country",
+      "coordinates": [
+        40.4,
+        9.1
+      ],
+      "capital": "Addis Abeba",
+      "alternatives": [
+        "Ethiopia",
+        "Ethiopie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-sud",
+      "name": "Soedan en Zuid-Soedan",
+      "category": "country",
+      "coordinates": [
+        30,
+        15
+      ],
+      "capital": "Khartoem",
+      "alternatives": [
+        "Sudan",
+        "Soedan",
+        "Zuid-Soedan",
+        "Zuid Soedan"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-ken",
+      "name": "Kenia",
+      "category": "country",
+      "coordinates": [
+        37.9,
+        -0.02
+      ],
+      "capital": "Nairobi",
+      "alternatives": [
+        "Kenya"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-rwa",
+      "name": "Rwanda",
+      "category": "country",
+      "coordinates": [
+        29.8,
+        -1.9
+      ],
+      "capital": "Kigali",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-bur",
+      "name": "Burundi",
+      "category": "country",
+      "coordinates": [
+        29.9,
+        -3.3
+      ],
+      "capital": "Gitega",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-mli",
+      "name": "Mali",
+      "category": "country",
+      "coordinates": [
+        -3.9,
+        17.5
+      ],
+      "capital": "Bamako",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-nga",
+      "name": "Nigeria",
+      "category": "country",
+      "coordinates": [
+        8.6,
+        9
+      ],
+      "capital": "Abuja",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-civ",
+      "name": "Ivoorkust",
+      "category": "country",
+      "coordinates": [
+        -5.5,
+        7.5
+      ],
+      "capital": "Yamoussoukro",
+      "alternatives": [
+        "Ivory Coast",
+        "Cote d'Ivoire"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-sen",
+      "name": "Senegal",
+      "category": "country",
+      "coordinates": [
+        -14.4,
+        14.4
+      ],
+      "capital": "Dakar",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-cod",
+      "name": "D.R. Congo",
+      "category": "country",
+      "coordinates": [
+        21.7,
+        -4
+      ],
+      "capital": "Kinshasa",
+      "alternatives": [
+        "Congo",
+        "Congo-Kinshasa",
+        "Democratische Republiek Congo",
+        "DR Congo"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-zaf",
+      "name": "Zuid-Afrika",
+      "category": "country",
+      "coordinates": [
+        22.9,
+        -30.5
+      ],
+      "capital": "Pretoria",
+      "alternatives": [
+        "South Africa",
+        "Zuid Afrika"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-rus",
+      "name": "Rusland",
+      "category": "country",
+      "coordinates": [
+        105,
+        60
+      ],
+      "capital": "Moskou",
+      "alternatives": [
+        "Russia",
+        "Russian Federation"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-ukr",
+      "name": "Oekra\u00efne",
+      "category": "country",
+      "coordinates": [
+        31.1,
+        48.3
+      ],
+      "capital": "Kiev",
+      "alternatives": [
+        "Ukraine",
+        "Oekraine"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-pak",
+      "name": "Pakistan",
+      "category": "country",
+      "coordinates": [
+        69.3,
+        30.3
+      ],
+      "capital": "Islamabad",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-afg",
+      "name": "Afghanistan",
+      "category": "country",
+      "coordinates": [
+        67.7,
+        33.9
+      ],
+      "capital": "Kabul",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-syr",
+      "name": "Syri\u00eb",
+      "category": "country",
+      "coordinates": [
+        38.9,
+        34.8
+      ],
+      "capital": "Damascus",
+      "alternatives": [
+        "Syria",
+        "Syrie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-isr",
+      "name": "Isra\u00ebl",
+      "category": "country",
+      "coordinates": [
+        34.8,
+        31
+      ],
+      "capital": "Jeruzalem",
+      "alternatives": [
+        "Israel",
+        "Jerusalem"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-idn",
+      "name": "Indonesi\u00eb",
+      "category": "country",
+      "coordinates": [
+        113.9,
+        -0.78
+      ],
+      "capital": "Jakarta",
+      "alternatives": [
+        "Indonesia",
+        "Indonesie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-phl",
+      "name": "Filipijnen",
+      "category": "country",
+      "coordinates": [
+        121.7,
+        12.8
+      ],
+      "capital": "Manilla",
+      "alternatives": [
+        "Philippines",
+        "Filipijnen"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-tha",
+      "name": "Thailand",
+      "category": "country",
+      "coordinates": [
+        100.9,
+        15.8
+      ],
+      "capital": "Bangkok",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-lbn",
+      "name": "Libanon",
+      "category": "country",
+      "coordinates": [
+        35.8,
+        33.8
+      ],
+      "capital": "Beiroet",
+      "alternatives": [
+        "Lebanon"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-jor",
+      "name": "Jordani\u00eb",
+      "category": "country",
+      "coordinates": [
+        36.2,
+        30.5
+      ],
+      "capital": "Amman",
+      "alternatives": [
+        "Jordan",
+        "Jordanie"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-sau",
+      "name": "Saudi-Arabi\u00eb",
+      "category": "country",
+      "coordinates": [
+        45,
+        23.8
+      ],
+      "capital": "Riyad",
+      "alternatives": [
+        "Saudi Arabia",
+        "Saoedi-Arabie",
+        "Saoedi Arabi\u00eb"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-tur",
+      "name": "Turkije",
+      "category": "country",
+      "coordinates": [
+        35.2,
+        38.9
+      ],
+      "capital": "Ankara",
+      "alternatives": [
+        "Turkey",
+        "Turkiye"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-chn",
+      "name": "China",
+      "category": "country",
+      "coordinates": [
+        104.1,
+        35.8
+      ],
+      "capital": "Beijing",
+      "alternatives": [
+        "Sina",
+        "Volksrepubliek China"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "wd-l-jpn",
+      "name": "Japan",
+      "category": "country",
+      "coordinates": [
+        138,
+        36.2
+      ],
+      "capital": "Tokio",
+      "alternatives": [
+        "Tokyo"
+      ],
+      "difficulty": "makkelijk"
+    },
+    {
+      "id": "wd-l-ind",
+      "name": "India",
+      "category": "country",
+      "coordinates": [
+        78.9,
+        20.5
+      ],
+      "capital": "New Delhi",
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-irn",
+      "name": "Iran",
+      "category": "country",
+      "coordinates": [
+        53.6,
+        32.4
+      ],
+      "capital": "Teheran",
+      "alternatives": [
+        "Persia"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-irq",
+      "name": "Irak",
+      "category": "country",
+      "coordinates": [
+        43.6,
+        33.2
+      ],
+      "capital": "Bagdad",
+      "alternatives": [
+        "Iraq"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-l-aus-country",
+      "name": "Australi\u00eb",
+      "category": "country",
+      "coordinates": [
+        133.7,
+        -25.2
+      ],
+      "capital": "Canberra",
+      "alternatives": [
+        "Australia",
+        "Australie"
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ],
+  "steden": [
+    {
+      "id": "wd-s-nyo",
+      "name": "New York",
+      "category": "city",
+      "coordinates": [
+        -74.006,
+        40.7128
+      ],
+      "alternatives": [
+        "New York City",
+        "NYC"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-was",
+      "name": "Washington DC",
+      "category": "city",
+      "coordinates": [
+        -77.0369,
+        38.9072
+      ],
+      "alternatives": [
+        "Washington"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-nor",
+      "name": "New Orleans",
+      "category": "city",
+      "coordinates": [
+        -90.0715,
+        29.9511
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-mia",
+      "name": "Miami",
+      "category": "city",
+      "coordinates": [
+        -80.1918,
+        25.7617
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-chi",
+      "name": "Chicago",
+      "category": "city",
+      "coordinates": [
+        -87.6298,
+        41.8781
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-los",
+      "name": "Los Angeles",
+      "category": "city",
+      "coordinates": [
+        -118.2437,
+        34.0522
+      ],
+      "alternatives": [
+        "LA"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-mex",
+      "name": "Mexico Stad",
+      "category": "city",
+      "coordinates": [
+        -99.1332,
+        19.4326
+      ],
+      "alternatives": [
+        "Mexico City",
+        "Ciudad de Mexico"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-car",
+      "name": "Caracas",
+      "category": "city",
+      "coordinates": [
+        -66.9036,
+        10.4806
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-rio",
+      "name": "Rio de Janeiro",
+      "category": "city",
+      "coordinates": [
+        -43.1729,
+        -22.9068
+      ],
+      "alternatives": [
+        "Rio"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-sao",
+      "name": "S\u00e3o Paulo",
+      "category": "city",
+      "coordinates": [
+        -46.6333,
+        -23.5505
+      ],
+      "alternatives": [
+        "Sao Paulo"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-lim",
+      "name": "Lima",
+      "category": "city",
+      "coordinates": [
+        -77.0428,
+        -12.0464
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-bue",
+      "name": "Buenos Aires",
+      "category": "city",
+      "coordinates": [
+        -58.3816,
+        -34.6037
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-bog",
+      "name": "Bogota",
+      "category": "city",
+      "coordinates": [
+        -74.0721,
+        4.711
+      ],
+      "alternatives": [
+        "Bogot\u00e1"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-cai",
+      "name": "Cairo",
+      "category": "city",
+      "coordinates": [
+        31.2357,
+        30.0444
+      ],
+      "alternatives": [
+        "Ca\u00efro"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-kin",
+      "name": "Kinshasa",
+      "category": "city",
+      "coordinates": [
+        15.3126,
+        -4.3276
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-kaa",
+      "name": "Kaapstad",
+      "category": "city",
+      "coordinates": [
+        18.4241,
+        -33.9249
+      ],
+      "alternatives": [
+        "Cape Town"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-lag",
+      "name": "Lagos",
+      "category": "city",
+      "coordinates": [
+        3.3792,
+        6.5244
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-nai",
+      "name": "Nairobi",
+      "category": "city",
+      "coordinates": [
+        36.8219,
+        -1.2921
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-dak",
+      "name": "Dakar",
+      "category": "city",
+      "coordinates": [
+        -17.4467,
+        14.7167
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-mos",
+      "name": "Moskou",
+      "category": "city",
+      "coordinates": [
+        37.6173,
+        55.7558
+      ],
+      "alternatives": [
+        "Moscow"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-bei",
+      "name": "Beijing",
+      "category": "city",
+      "coordinates": [
+        116.4074,
+        39.9042
+      ],
+      "alternatives": [
+        "Peking"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-ist",
+      "name": "Istanbul",
+      "category": "city",
+      "coordinates": [
+        28.9784,
+        41.0082
+      ],
+      "alternatives": [
+        "Istanboel"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-kar",
+      "name": "Karachi",
+      "category": "city",
+      "coordinates": [
+        67.0011,
+        24.8607
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-teh",
+      "name": "Teheran",
+      "category": "city",
+      "coordinates": [
+        51.389,
+        35.6892
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-mum",
+      "name": "Mumbai",
+      "category": "city",
+      "coordinates": [
+        72.8777,
+        19.076
+      ],
+      "alternatives": [
+        "Bombay"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-del",
+      "name": "New Delhi",
+      "category": "city",
+      "coordinates": [
+        77.209,
+        28.6139
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-kol",
+      "name": "Kolkata/Calcutta",
+      "category": "city",
+      "coordinates": [
+        88.3639,
+        22.5726
+      ],
+      "alternatives": [
+        "Calcutta",
+        "Kolkata"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-dha",
+      "name": "Dhaka",
+      "category": "city",
+      "coordinates": [
+        90.4125,
+        23.8103
+      ],
+      "alternatives": [
+        "Dacca"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-sha",
+      "name": "Shanghai",
+      "category": "city",
+      "coordinates": [
+        121.4737,
+        31.2304
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-seo",
+      "name": "Seoul",
+      "category": "city",
+      "coordinates": [
+        126.978,
+        37.5665
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-tok",
+      "name": "Tokio",
+      "category": "city",
+      "coordinates": [
+        139.6917,
+        35.6762
+      ],
+      "alternatives": [
+        "Tokyo"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-sin",
+      "name": "Singapore",
+      "category": "city",
+      "coordinates": [
+        103.8198,
+        1.3521
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-man",
+      "name": "Manilla",
+      "category": "city",
+      "coordinates": [
+        120.9842,
+        14.5995
+      ],
+      "alternatives": [
+        "Manila"
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-jak",
+      "name": "Jakarta",
+      "category": "city",
+      "coordinates": [
+        106.8456,
+        -6.2088
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-syd",
+      "name": "Sydney",
+      "category": "city",
+      "coordinates": [
+        151.2093,
+        -33.8688
+      ],
+      "difficulty": "gemiddeld"
+    },
+    {
+      "id": "wd-s-mel",
+      "name": "Melbourne",
+      "category": "city",
+      "coordinates": [
+        144.9631,
+        -37.8136
+      ],
+      "difficulty": "gemiddeld"
+    }
+  ]
+}

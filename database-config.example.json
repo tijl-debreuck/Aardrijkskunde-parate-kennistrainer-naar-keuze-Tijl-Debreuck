@@ -1,0 +1,10 @@
+{
+  "_comment": "Voorbeeldconfiguratie voor database / cloud setup. Bevat GEEN geheime sleutels en kan veilig op GitHub geplaatst worden.",
+  "projectId": "your-project-id",
+  "appId": "your-app-id",
+  "apiKey": "YOUR_API_KEY_HERE",
+  "authDomain": "your-project.example.com",
+  "databaseId": "your-database-id",
+  "storageBucket": "your-storage-bucket.appspot.com",
+  "messagingSenderId": "000000000000"
+}
