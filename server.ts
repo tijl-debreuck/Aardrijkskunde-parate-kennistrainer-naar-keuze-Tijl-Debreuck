@@ -6,6 +6,8 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
 import crypto from "crypto";
+import { initDatabase } from "./server/db";
+import { createAuthRouter, createUserDataRouter } from "./server/auth";
 
 dotenv.config();
 
@@ -41,7 +43,7 @@ const authLimiter = rateLimit({
 // Apply general rate limiting to all API routes
 app.use("/api/", apiLimiter);
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Helper to compute SHA-256 buffer
 function hashPasswordToBuffer(pwd: string): Buffer {
@@ -122,68 +124,9 @@ app.post("/api/admin/verify", authLimiter, async (req, res) => {
   }
 });
 
-// In-memory data store met server-side synchronisatie voor gebruikersmappen en voortgang
-interface UserSyncRecord {
-  userId: string;
-  folders: any[];
-  progress?: any;
-  stats?: any;
-  preferences?: any;
-  syncedAt: string;
-  ip?: string;
-}
-
-const userSyncStore = new Map<string, UserSyncRecord>();
-
-// API endpoint om leermapjes en voortgang automatisch van localStorage naar de backend te sturen
-app.post("/api/user/sync", (req, res) => {
-  try {
-    const { userId, folders, progress, stats, preferences } = req.body;
-
-    if (!userId || typeof userId !== "string") {
-      return res.status(400).json({ success: false, error: "Geldig userId is vereist voor synchronisatie." });
-    }
-
-    if (folders && !Array.isArray(folders)) {
-      return res.status(400).json({ success: false, error: "Folders moeten een lijst (array) zijn." });
-    }
-
-    const now = new Date().toISOString();
-    const record: UserSyncRecord = {
-      userId,
-      folders: folders || [],
-      progress: progress || {},
-      stats: stats || {},
-      preferences: preferences || {},
-      syncedAt: now,
-      ip: (req.ip || "").toString()
-    };
-
-    userSyncStore.set(userId, record);
-
-    return res.json({
-      success: true,
-      lastSynced: now,
-      folderCount: (record.folders || []).length,
-      message: "Data succesvol gesynchroniseerd met de backend service."
-    });
-  } catch (error) {
-    console.error("Sync error:", error);
-    return res.status(500).json({ success: false, error: "Interne fout bij synchroniseren." });
-  }
-});
-
-// API endpoint om gesynchroniseerde data op te halen voor een account
-app.get("/api/user/sync/:userId", (req, res) => {
-  const { userId } = req.params;
-  const data = userSyncStore.get(userId);
-
-  if (!data) {
-    return res.json({ success: true, data: null, message: "Nog geen backend synchronisatie geregistreerd voor dit account." });
-  }
-
-  return res.json({ success: true, data });
-});
+// Accounts en gebruikersdata (PostgreSQL)
+app.use("/api/auth", createAuthRouter(authLimiter));
+app.use("/api/user/data", createUserDataRouter());
 
 // Security.txt endpoint according to RFC 9116
 app.get(["/.well-known/security.txt", "/security.txt"], (_req, res) => {
@@ -197,6 +140,8 @@ app.get(["/.well-known/security.txt", "/security.txt"], (_req, res) => {
 
 // Configure Vite or Static Serve
 async function startServer() {
+  await initDatabase();
+
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -211,9 +156,17 @@ async function startServer() {
     });
   }
 
+  app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    console.error("Serverfout:", err);
+    res.status(500).json({ success: false, error: "Interne serverfout." });
+  });
+
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
   });
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error("Server kon niet starten:", err);
+  process.exit(1);
+});

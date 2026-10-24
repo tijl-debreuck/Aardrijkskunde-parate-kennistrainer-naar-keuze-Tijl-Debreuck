@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { LogOut, User as UserIcon, Mail, Lock, Chrome, AlertCircle, Trash2 } from 'lucide-react';
+import { LogOut, User as UserIcon, Mail, Lock, AlertCircle, Trash2 } from 'lucide-react';
 import { 
-  auth, db, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, signOut, User, doc, deleteDoc 
+  auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User
 } from '../../lib/dbAdapter';
 
 export function triggerOpenLoginModal() {
@@ -31,20 +30,6 @@ export default function LoginMenu({ user, theme, onShowProgress }: Props) {
   const [loading, setLoading] = useState(false);
 
   const isDark = theme === 'dark';
-
-  const handleGoogleLogin = async () => {
-    setError(null);
-    setLoading(true);
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      setIsOpen(false);
-    } catch (err: any) {
-      setError(err.message || 'Inloggen met Google mislukt.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,19 +59,11 @@ export default function LoginMenu({ user, theme, onShowProgress }: Props) {
   const handleDeleteAccount = async () => {
      if (window.confirm("Weet je zeker dat je je account en alle opgeslagen voortgang wilt verwijderen? Dit kan niet ongedaan worden gemaakt.")) {
          try {
-             if (auth.currentUser) {
-                 const uid = auth.currentUser.uid;
-                 // Delete the Firestore document first since rules require auth
-                 await deleteDoc(doc(db, 'users', uid));
-                 // Then delete the user account
-                 await auth.currentUser.delete();
-             }
+             // Verwijdert account en alle gekoppelde data in de database
+             await auth.currentUser?.delete?.();
+             setIsOpen(false);
          } catch (err: any) {
-             if (err?.code === 'auth/requires-recent-login') {
-               alert("Voor je veiligheid moet je eerst uitloggen en opnieuw inloggen om je account te kunnen verwijderen.");
-             } else {
-               alert(err.message || "Fout bij verwijderen account. Log opnieuw in en probeer opnieuw.");
-             }
+             alert(err.message || "Fout bij verwijderen account. Log opnieuw in en probeer opnieuw.");
          }
      }
   };
@@ -172,21 +149,6 @@ export default function LoginMenu({ user, theme, onShowProgress }: Props) {
                     </p>
                   </div>
 
-                  <button
-                    onClick={handleGoogleLogin}
-                    disabled={loading}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors"
-                  >
-                    <Chrome className="w-4 h-4 text-blue-500" />
-                    Inloggen met Google
-                  </button>
-
-                  <div className="relative flex items-center py-2">
-                    <div className="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
-                    <span className="flex-shrink-0 mx-4 text-xs text-slate-400">of</span>
-                    <div className="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
-                  </div>
-
                   <form onSubmit={handleEmailAuth} className="space-y-3">
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -195,6 +157,7 @@ export default function LoginMenu({ user, theme, onShowProgress }: Props) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="E-mailadres"
+                        autoComplete="email"
                         required
                         className={`w-full pl-9 pr-3 py-2 rounded-xl text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                           isDark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-200'
@@ -207,7 +170,9 @@ export default function LoginMenu({ user, theme, onShowProgress }: Props) {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Wachtwoord"
+                        placeholder={isLoginView ? 'Wachtwoord' : 'Wachtwoord (min. 8 tekens)'}
+                        autoComplete={isLoginView ? 'current-password' : 'new-password'}
+                        minLength={isLoginView ? undefined : 8}
                         required
                         className={`w-full pl-9 pr-3 py-2 rounded-xl text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                           isDark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-50 border-slate-200'

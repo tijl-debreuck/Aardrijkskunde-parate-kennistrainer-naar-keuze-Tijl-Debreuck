@@ -113,8 +113,6 @@ export const MyLearningPage: React.FC<MyLearningPageProps> = ({
         updatePreferences({ studyFolders: newFolders } as any);
       }
     }
-    // Bewaar ook altijd een backup zodat data nooit per ongeluk verdwijnt
-    localStorage.setItem('geo_study_folders', JSON.stringify(newFolders));
   };
 
   // Active modal/editor state: null = viewing overview, 'create' | folderId = editing

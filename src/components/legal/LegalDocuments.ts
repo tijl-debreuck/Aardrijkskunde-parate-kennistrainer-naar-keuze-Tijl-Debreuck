@@ -14,11 +14,11 @@ export const LEGAL_SECTIONS: LegalSection[] = [
     summary: 'Minimale gegevensverzameling, strikt educatief doel en volledige AVG-bescherming.',
     content: [
       'GeoTrainer verwerkt uitsluitend persoonsgegevens en leervoortgang conform de Europese Algemene Verordening Gegevensbescherming (AVG / GDPR, Verordening (EU) 2016/679).',
-      'Welke gegevens worden verwerkt: Lokale oefenscores, beantwoorde quizvragen, precisiepercentages, reactietijden en zelf samengestelde studiemapjes. Er worden geen onnodige identificerende persoonsgegevens verzameld; alle leervoortgang wordt veilig en lokaal opgeslagen in de browser.',
+      'Welke gegevens worden verwerkt: Oefenscores, beantwoorde quizvragen, precisiepercentages, reactietijden en zelf samengestelde studiemapjes. Zonder account blijft alles lokaal in je browser. Maak je een account aan, dan bewaren we je e-mailadres, een versleutelde (gehashte) versie van je wachtwoord, je voorkeuren, leervoortgang en studiemapjes in onze database, zodat je ze op elk toestel terugvindt.',
       'Doeleinden van verwerking: De gegevens worden uitsluitend verwerkt voor educatieve doeleinden, gepersonaliseerde leertraining en de spaced repetition leercyclus.',
       'Rechtsgrond van verwerking: Toestemming van de gebruiker (Art. 6 lid 1 sub a AVG) en het gerechtvaardigd belang van het leveren van een functioneel educatief leerplatform (Art. 6 lid 1 sub f AVG).',
-      'Bewaartermijn: Gegevens blijven opgeslagen in je lokale browser (en optioneel gekoppelde toekomstige database) totdat je deze zelf wist of de browseropslag leegmaakt.',
-      'Ontvangers & Doorgifte buiten de EU: GeoTrainer verkoopt, verhuurt of deelt NOOIT gegevens met commerciële advertentienetwerken. Alle leervoortgang blijft lokaal binnen de browser van de gebruiker.',
+      'Bewaartermijn: Lokale gegevens blijven in je browser totdat je ze zelf wist of de browseropslag leegmaakt. Accountgegevens blijven in de database tot je je account verwijdert via "Account verwijderen"; dan worden ze onmiddellijk en definitief gewist.',
+      'Ontvangers & Doorgifte buiten de EU: GeoTrainer verkoopt, verhuurt of deelt NOOIT gegevens met commerciële advertentienetwerken. Accountgegevens worden enkel opgeslagen bij onze hostingprovider en niet aan derden doorgegeven.',
       'Datalekprocedure: In het geval van een beveiligingsincident of datalek wordt dit gedocumenteerd en binnen 72 uur gemeld bij de toezichthoudende autoriteit (de Belgische Gegevensbeschermingsautoriteit / GBA of Nederlandse AP).',
       'Jonge gebruikers & scholieren: GeoTrainer is ontworpen als veilige leeromgeving voor alle leeftijden. We verzamelen geen overbodige identificerende gegevens en hanteren universeel de hoogste privacystandaarden.'
     ]
@@ -29,8 +29,9 @@ export const LEGAL_SECTIONS: LegalSection[] = [
     icon: 'Cookie',
     summary: 'Alleen strikt noodzakelijke lokale browseropslag; geen advertentiecookies of tracking pixels.',
     content: [
-      'GeoTrainer maakt conform de ePrivacy-richtlijn uitsluitend gebruik van strikt noodzakelijke functionele browseropslag (HTML5 localStorage).',
+      'GeoTrainer maakt conform de ePrivacy-richtlijn uitsluitend gebruik van strikt noodzakelijke functionele browseropslag (HTML5 localStorage) en, voor ingelogde gebruikers, één strikt noodzakelijke sessiecookie.',
       'Overzicht van opgeslagen sleutels:',
+      '• geo_session (cookie, enkel na inloggen): Houdt je ingelogd. Strikt noodzakelijk, httpOnly en vervalt na 30 dagen of bij uitloggen.',
       '• geo_legal_consent: Onthoudt jouw acceptatie van deze juridische voorwaarden.',
       '• geo_theme: Onthoudt jouw kleurvoorkeur (donker of licht thema).',
       '• geo_language: Onthoudt jouw taalvoorkeur voor geografische namen (Nederlands of Engels).',
